@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../inc/lem_in.h"
 
 void	ft_putchar_fd(char c, int fd)
 {

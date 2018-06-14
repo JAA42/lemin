@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:06:53 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/14 19:12:48 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/14 20:42:28 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	init_w(w_pm **w)
 	*w = (w_pm *)malloc(sizeof(w_pm));
 
 	(*w)->exit = ft_strdup("1");
+	(*w)->len = -1;
 
 	(*w)->rooms = (char ***)malloc(sizeof(char **) * 6);
 	(*w)->rooms[0] = (char **)malloc(sizeof(char *) * 4);
@@ -53,62 +54,69 @@ void	init_w(w_pm **w)
 
 }
 
-
-int	good_i()
-{
-
-}
-
-int	already_pass(char *history, char *way)
+int	first_passage(char *history, char *room)
 {
 	int	i;
 	int	j;
 
 	j = 0;
 	i = 0;
-	while (way[i])
+	while (history[i])
 	{
-		if (way[i] == history[j])
+		if (history[i] == room[j])
 		{
-			while(way[i + j] || way[i + j + 1] != '\n')
+			while (history[i + j] &&
+					history[i + j] == room[j] && room[j])
 				j++;
+			if (room[j] == '\0' &&
+					(history[i + j] == '\0' || history[i + j] == '\n'))
+				return (0);
+			else
+				j = 0;
 		}
+		i++;
 	}
-	return (0);
+	return (1);
 }
 
-int	good_index(t_pm *s, char *name)
+int	get_index(w_pm *w, char *name)
 {
-	while (ft_strcmp(name, )
+	int	i;
 
-
+	i = 0;
+	while (w->rooms[i] != NULL)
+	{
+		if (ft_strcmp(name, w->rooms[i][0]) == 0)
+			return (i);
+		else
+			i++;
+	}
+	return (i);
 }
 
 int	simule_way(w_pm *w, int i, int j, char *way, int len)
 {
-	if (w->rooms[i][j] == NULL)
-		return (0); // HEHOOOOOOOOO
-	else if (ft_strcmp(w->rooms[i][j], "1") == 0)
+	if (ft_strcmp(w->rooms[i][j], w->exit) == 0)
 	{
-		if (len < w->len)
+		if (len < w->len || w->len == -1)
 		{
-				w->way = ft_strdup(way); //free
+				w->way = ft_str3join(way, "\n", w->rooms[i][j]);//free
 				w->len = len;
 		}
 	}
-	if (!already_pass(w->rooms[i][j], way))
+	else if (first_passage(way, w->rooms[i][j]))
 	{
-		simule_way(w, good_index(s, w->rooms[i][j]), 1, way, len++);
+		way = ft_str3join(way, "\n", w->rooms[i][j]);
+		simule_way(w, get_index(w, w->rooms[i][j]), 1, way, len++);
 	}
-	else
+	else if (w->rooms[i][j + 1] != NULL)
 	{
-		simule_way(w, i, j++, way, len);
-		return (-1);
+		simule_way(w, get_index(w, w->rooms[i][++j]), 1, way, len);
 	}
-	return (len);
+	return (0);
 }
 
-char	*run_algo(char ***rooms)
+char	*run_algo()
 {
 	int	j;
 	int len = 0;
@@ -117,14 +125,13 @@ char	*run_algo(char ***rooms)
 
 	j = 1;
 	init_w(&w);
-	while (rooms[0][j])
+	way = ft_strdup(w->rooms[0][0]);
+	while (w->rooms[0][j])
 	{
-		way = ft_strjoin_f(rooms[0][j], "\n", 1);
 		simule_way(w, 0, j, way, len);
 		j++;
 	}
-	return (way);
-
+	return (w->way);
 }
 
 
@@ -137,6 +144,6 @@ int	main()
 
 	char	*way;
 
-	ft_putstr(way = run_algo(rooms));
+	ft_putstr(run_algo());
 	return (0);
 }

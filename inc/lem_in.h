@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:07:31 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/14 18:52:58 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/14 20:40:27 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ t_pm			*init_struct(t_pm *s);
 void			get_datas(t_pm *s);
 
 void			ft_error(void);
+char			*ft_str3join(char const *s1, char const *s2, char *s3);
 int				get_next_line(const int fd, char **line);
 char			*ft_strcat(char *dest, const char *src);
 void			*ft_memset(void *s, int c, size_t n);

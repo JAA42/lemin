@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avallois <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/13 21:49:40 by avallois          #+#    #+#             */
-/*   Updated: 2018/06/13 21:49:41 by avallois         ###   ########.fr       */
+/*   Created: 2017/11/21 21:52:11 by adhondt           #+#    #+#             */
+/*   Updated: 2018/06/14 20:00:43 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/lem_in.h"
 
-void	ft_putstr_fd(char const *s, int fd)
+char	*ft_str3join(char const *s1, char const *s2, char *s3)
 {
-	char *str;
+	char	*dest;
 
-	str = (char *)s;
-	while (*str)
-	{
-		ft_putchar_fd(*str, fd);
-		str++;
-	}
+	dest = ft_strjoin(s1, s2);
+	dest = ft_strjoin_f(dest, s3, 1);
+	return (dest);
 }

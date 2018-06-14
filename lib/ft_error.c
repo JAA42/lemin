@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: avallois <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/13 21:49:40 by avallois          #+#    #+#             */
-/*   Updated: 2018/06/13 21:49:41 by avallois         ###   ########.fr       */
+/*   Created: 2018/06/14 20:39:48 by adhondt           #+#    #+#             */
+/*   Updated: 2018/06/14 20:40:41 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/lem_in.h"
 
-void	ft_putstr_fd(char const *s, int fd)
+void	ft_error(void)
 {
-	char *str;
-
-	str = (char *)s;
-	while (*str)
-	{
-		ft_putchar_fd(*str, fd);
-		str++;
-	}
+	ft_putstr("ERROR\n");
+	exit (0);
 }
