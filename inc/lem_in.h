@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:07:31 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/14 16:07:33 by avallois         ###   ########.fr       */
+/*   Updated: 2018/06/14 18:25:57 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@ typedef struct		s_pm
 	char	**rooms;
 	char	**tubes;
 }					t_pm;
+
+// structure temporaire pour la recursivitee
+typedef struct		way_pm
+{
+	int		len;
+	char	*way;
+	char	**rooms;
+}					w_pm;
+
 
 t_pm			*init_struct(t_pm *s);
 void			get_datas(t_pm *s);
