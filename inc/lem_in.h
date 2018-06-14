@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:07:31 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/14 18:25:57 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/14 18:52:58 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ typedef struct		way_pm
 {
 	int		len;
 	char	*way;
-	char	**rooms;
+	char	*exit;
+	char	***rooms;
 }					w_pm;
 
 
