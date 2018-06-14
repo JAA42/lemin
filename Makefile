@@ -6,7 +6,7 @@
 #    By: avallois <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/13 21:48:44 by avallois          #+#    #+#              #
-#    Updated: 2018/06/14 13:26:55 by adhondt          ###   ########.fr        #
+#    Updated: 2018/06/14 16:05:25 by avallois         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,12 +26,13 @@ INC_PATH = ./inc
 OBJ_PATH = ./obj
 OBJLIB_PATH = ./obj
 
-SRC_NAME =	 main.c \
+SRC_NAME =	 lem_in.c init.c get_datas.c\
 
 LIB_NAME = 	ft_putchar.c ft_putstr.c ft_chardup.c ft_strdup.c \
 			ft_itoa.c ft_atoi.c ft_itoa_base.c ft_memalloc.c ft_memalloc_c.c \
 			ft_putnbr.c ft_strcmp.c ft_strcpy.c ft_strjoin.c ft_strjoin_f.c \
 			ft_strlen.c ft_strstr.c pos_in_str.c ft_memset.c  ft_strcat.c \
+			get_next_line.c ft_strsub.c ft_strchr.c ft_isdigit.c ft_putstr_fd.c ft_putchar_fd.c \
 
 INC_NAME = lem_in.h
 

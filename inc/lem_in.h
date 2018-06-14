@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:07:31 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/14 13:25:19 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/14 16:07:33 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,31 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
+# define BUFF_SIZE 4
 
+//ne pas oublier de verifier que les coordonnees sont des entiers
+typedef struct		s_pm
+{
+	int		nbants;
+	char	**rooms;
+	char	**tubes;
+}					t_pm;
 
+t_pm			*init_struct(t_pm *s);
+void			get_datas(t_pm *s);
+
+void			ft_error(void);
+int				get_next_line(const int fd, char **line);
 char			*ft_strcat(char *dest, const char *src);
 void			*ft_memset(void *s, int c, size_t n);
 char			*ft_chardup(char c);
 int				ft_atoi(const char *str);
 void			ft_putchar(char c);
+void			ft_putchar_fd(char c, int fd);
 int				pos_in_str(char c, char *str);
 char			*ft_strcpy(char *dest, const char *str);
 void			ft_putstr(char const *s);
+void			ft_putstr_fd(char const *s, int fd);
 int				ft_strcmp(const char *tab, const char *tab2);
 char			*ft_strdup(const char *s);
 void			*ft_memalloc(size_t size);
@@ -36,5 +51,8 @@ char			*ft_itoa(int n);
 char			*ft_itoa_base(int value, int base, int upper);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strjoin_f(char const *s1, char const *s2, int j);
+char			*ft_strsub(char const *s, unsigned int start, size_t len);
+char			*ft_strchr(const char *s, int c);
+int				ft_isdigit(int c);
 
 #endif
