@@ -70,8 +70,8 @@ char	*run_algo()
 
 	j = 0;
 	init_w(&w);
-	way = ft_strdup(w->rooms[0][0]);
-	if (ft_strcmp(w->rooms[0][0], w->exit) == 0)
+	way = ft_strdup(w->rooms[get_index(w, w->entrance)][0]);
+	if (ft_strcmp(w->entrance, w->exit) == 0)
 		ft_putstr(w->rooms[0][0]);
 	else
 		while (w->rooms[get_index(w, w->entrance)][++j])

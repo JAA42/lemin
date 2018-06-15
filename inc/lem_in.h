@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:07:31 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/15 11:09:04 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/15 11:32:44 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct		s_pm
 typedef struct		way_pm
 {
 	int		len;
+	int		ants_count;
 	char	*way;
 	char	*exit;
 	char	*entrance;
