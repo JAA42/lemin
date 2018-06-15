@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:07:31 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/15 10:12:44 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/15 11:09:04 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct		way_pm
 	int		len;
 	char	*way;
 	char	*exit;
+	char	*entrance;
 	char	***rooms;
 }					w_pm;
 
@@ -39,6 +40,12 @@ typedef struct		way_pm
 t_pm			*init_struct(t_pm *s);
 void			get_datas(t_pm *s);
 
+// axel
+void			init_w(w_pm **w);
+
+/*
+ * LIB
+ */
 void			ft_error(void);
 char			*ft_str3join(char const *s1, char const *s2, char *s3);
 int				get_next_line(const int fd, char **line);

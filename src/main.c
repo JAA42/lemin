@@ -1,47 +1,6 @@
 
 #include "../inc/lem_in.h"
 
-void	init_w(w_pm **w)
-{
-	*w = (w_pm *)malloc(sizeof(w_pm));
-
-	(*w)->exit = ft_strdup("1");
-	(*w)->len = -1;
-
-	(*w)->rooms = (char ***)malloc(sizeof(char **) * 6);
-	(*w)->rooms[0] = (char **)malloc(sizeof(char *) * 4);
-	(*w)->rooms[1] = (char **)malloc(sizeof(char *) * 4);
-	(*w)->rooms[2] = (char **)malloc(sizeof(char *) * 5);
-	(*w)->rooms[3] = (char **)malloc(sizeof(char *) * 5);
-	(*w)->rooms[4] = (char **)malloc(sizeof(char *) * 1);
-	(*w)->rooms[5] = NULL;
-
-	(*w)->rooms[0][0] = ft_strdup("0");
-	(*w)->rooms[0][1] = ft_strdup("2");
-	(*w)->rooms[0][2] = ft_strdup("3");
-	(*w)->rooms[0][3] = NULL;
-
-	(*w)->rooms[1][0] = ft_strdup("1");
-	(*w)->rooms[1][1] = ft_strdup("2");
-	(*w)->rooms[1][2] = ft_strdup("3");
-	(*w)->rooms[1][3] = NULL;
-
-	(*w)->rooms[2][0] = ft_strdup("2");
-	(*w)->rooms[2][1] = ft_strdup("0");
-	(*w)->rooms[2][2] = ft_strdup("1");
-	(*w)->rooms[2][3] = ft_strdup("3");
-	(*w)->rooms[2][4] = NULL;
-
-	(*w)->rooms[3][0] = ft_strdup("3");
-	(*w)->rooms[3][1] = ft_strdup("2");
-	(*w)->rooms[3][2] = ft_strdup("1");
-	(*w)->rooms[3][3] = ft_strdup("0");
-	(*w)->rooms[3][4] = NULL;
-
-	(*w)->rooms[4] = NULL;
-
-}
-
 int	first_passage(char *history, char *room)
 {
 	int	i;
@@ -115,14 +74,14 @@ char	*run_algo()
 	char	*way;
 	w_pm	*w;
 
-	j = 1;
+	j = 0;
 	init_w(&w);
 	way = ft_strdup(w->rooms[0][0]);
-	while (w->rooms[0][j])
-	{
-		simule_way(w, 0, j, way, len);
-		j++;
-	}
+	if (ft_strcmp(w->rooms[0][0], w->exit) == 0)
+		ft_putstr(w->rooms[0][0]);
+	else
+		while (w->rooms[get_index(w, w->entrance)][++j])
+			simule_way(w, get_index(w, w->entrance), j, way, len);
 	return (w->way);
 }
 
