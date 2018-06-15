@@ -43,11 +43,12 @@ void			get_datas(t_pm *s);
 
 // axel
 void			init_w(w_pm **w);
-void			send_ants(w_pm *w, int checkpoint_sum);
+void			send_ants(w_pm *w, int checkpoint_sum, char **way);
 
 /*
  * LIB
  */
+char			**ft_split(char *str);
 int				ft_count_char(char *str, char c);
 char			*ft_str3join_f(char *s1, char *s2, char *s3, int i);
 char			*ft_strdup_f(char *s);

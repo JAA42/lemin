@@ -91,6 +91,6 @@ int	main()
 		exit(0);
 	}
 	 ft_putstr(w->way);
-	send_ants(w, (ft_count_char(w->way, '\n') + 1));
+	send_ants(w, (ft_count_char(w->way, '\n') + 1), ft_split(w->way));
 	return (0);
 }

@@ -34,7 +34,7 @@ LIB_NAME = 	ft_putchar.c ft_putstr.c ft_chardup.c ft_strdup.c \
 			ft_strlen.c ft_strstr.c pos_in_str.c ft_memset.c  ft_strcat.c \
 			get_next_line.c ft_strsub.c ft_strchr.c ft_isdigit.c \
 			ft_putstr_fd.c ft_putchar_fd.c ft_str3join.c ft_error.c \
-			ft_strdup_f.c ft_str3join_f.c ft_count_char.c \
+			ft_strdup_f.c ft_str3join_f.c ft_count_char.c ft_split.c \
 
 INC_NAME = lem_in.h
 

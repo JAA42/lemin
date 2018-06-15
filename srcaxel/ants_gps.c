@@ -1,9 +1,11 @@
 #include "../inc/lem_in.h"
 
-void	send_ants(w_pm *w, int checkpoint_sum)
+void	send_ants(w_pm *w, int checkpoint_sum, char **way)
 {
-	while (//fourmis 1 n'est pas a end)
-	{
+	int	i;
+	int	j;
+//	while (fourmis 1 n'est pas a end)
+//	{
 	// si i == 1 afficher une fois 
 	// i == 2 afficher deux fois 
 	//			si afficher 2 fois, 
@@ -16,9 +18,23 @@ void	send_ants(w_pm *w, int checkpoint_sum)
 	//				afficher Lx-yeme element de way 
 	//				x++, y--;
 	//etc....
-	}
-	while (//fourmis 1 à end, construire làlgo en sens inverse)
+//	}
+//	while (//fourmis 1 à end, construire làlgo en sens inverse)
+//	{
+//		// algo dans le sens inverse 
+//	}
+	i = 0;
+	while (i != checkpoint_sum)
 	{
-		// algo dans le sens inverse 
+		j = 0;
+		while (j <= i)
+		{
+			if (j != 0)
+				ft_putchar(' ');
+			printf("L%d-%s", j + 1, way[i - j]);
+			j++;
+		}
+		i++;
 	}
+
 }
