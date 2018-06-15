@@ -45,7 +45,6 @@ int	simule_way(w_pm *w, int i, int j, char *way, int len)
 {
 	if (ft_strcmp(w->rooms[i][j], w->exit) == 0)
 	{
-//	printf("ICI\n");
 		if (len < w->len || w->len == -1)
 		{
 				w->way = ft_str3join(way, "\n", w->rooms[i][j]);//free
@@ -54,16 +53,11 @@ int	simule_way(w_pm *w, int i, int j, char *way, int len)
 	}
 	else if (first_passage(way, w->rooms[i][j]))
 	{
-//	printf("ICI2\n");
 		way = ft_str3join(way, "\n", w->rooms[i][j]);
-//		printf("index sent:%d|way:%s|\n", get_index(w, w->rooms[i][j]), way);
 		simule_way(w, get_index(w, w->rooms[i][j]), 1, way, ++len);
 	}
 	else if (w->rooms[i][j + 1] != NULL)
-	{
-//	printf("ICI3\n");
 		simule_way(w, i, ++j, way, len);
-	}
 	return (0);
 }
 
