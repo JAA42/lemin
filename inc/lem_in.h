@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:07:31 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/14 20:40:27 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/15 10:12:44 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LEM_IN_H
 # include <stdarg.h>
 # include <stdlib.h>
+# include <stdio.h>
 # include <unistd.h>
 # define BUFF_SIZE 4
 
