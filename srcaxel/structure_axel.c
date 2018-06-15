@@ -16,7 +16,8 @@ void	init_w(w_pm **w)
 	(*w)->ants_count = 4;
 	
 		/* SALLE 1 */
-	(*w)->rooms = (char ***)malloc(sizeof(char **) * 6);
+	
+/*	(*w)->rooms = (char ***)malloc(sizeof(char **) * 6);
 	(*w)->rooms[0] = (char **)malloc(sizeof(char *) * 4);
 	(*w)->rooms[1] = (char **)malloc(sizeof(char *) * 4);
 	(*w)->rooms[2] = (char **)malloc(sizeof(char *) * 5);
@@ -47,7 +48,7 @@ void	init_w(w_pm **w)
 	(*w)->rooms[3][4] = NULL;
 
 	(*w)->rooms[4] = NULL;
-
+*/
 	/* SALLE 2 */
 	(*w)->exit = ft_strdup("finish gang 0"); 
 	(*w)->entrance = ft_strdup("1"); 

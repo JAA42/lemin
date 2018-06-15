@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:07:31 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/15 11:32:44 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/15 16:21:10 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,13 @@ void			get_datas(t_pm *s);
 
 // axel
 void			init_w(w_pm **w);
+void			send_ants(w_pm *w);
 
 /*
  * LIB
  */
+char			*ft_str3join_f(char *s1, char *s2, char *s3, int i);
+char			*ft_strdup_f(char *s);
 void			ft_error(void);
 char			*ft_str3join(char const *s1, char const *s2, char *s3);
 int				get_next_line(const int fd, char **line);
