@@ -52,7 +52,7 @@ int	simule_way(w_pm *w, int i, int j, char *way, int len)
 	}
 	else if (first_passage(way, w->rooms[i][j]))
 	{
-		way = ft_str3join_f(way, "\n", w->rooms[i][j], 0); // erreur de free
+		way = ft_str3join_f(way, "\n", w->rooms[i][j], 0);
 		simule_way(w, get_index(w, w->rooms[i][j]), 1, way, ++len);
 	}
 	else if (w->rooms[i][j + 1] != NULL)
@@ -90,7 +90,6 @@ int	main()
 		 ft_putstr("No way\n");
 		exit(0);
 	}
-	printf("way before:%s|\n", w->way);
 	send_ants(w, (ft_count_char(w->way, '\n') + 1), ft_split(w->way));
 	return (0);
 }

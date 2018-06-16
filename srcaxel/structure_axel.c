@@ -11,7 +11,7 @@ void	init_w(w_pm **w)
 	 * ants_count doit etre fournie par le parsing
 	 */
 	(*w)->exit = ft_strdup("0"); 
-	(*w)->entrance = ft_strdup("0"); 
+	(*w)->entrance = ft_strdup("3"); 
 	(*w)->len = -1;
 	(*w)->ants_count = 4;
 	

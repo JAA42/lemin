@@ -1,0 +1,3 @@
+Si entree = sortie : lancer toutes les fourmies ou pas  ?
+Segfault si entree ou sortie invalide
+plein de test
