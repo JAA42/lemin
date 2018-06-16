@@ -9,7 +9,8 @@ int			ft_mot(char *str)
 	mot = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i + 1] == '\n' && str[i] != '\n' )
+		if ((str[i + 1] == '\n' && str[i] != '\n') || (str[i] != '\0' &&
+			str[i + 1] == '\0'))
 			mot++;
 		i++;
 	}
@@ -21,7 +22,7 @@ int				ft_lettre(char *str)
 	int			lettre;
 
 	lettre = 0;
-	while (*str != '\n')
+	while (*str != '\n' && *str != '\0' )
 	{
 		str++;
 		lettre++;
@@ -41,11 +42,11 @@ char			**ft_split(char *str)
 	i = 0;
 	while (i < mot)
 	{
-		while (*str == '\n')
+		while (*str == '\n' && *str)
 			str++;
 		tab[i] = (char*)malloc(sizeof(char) * (ft_lettre(str) + 1));
 		j = 0;
-		while (*str != '\n')
+		while (*str != '\n' && *str != '\0')
 		{
 			tab[i][j++] = *str;
 			str++;
