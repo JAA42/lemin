@@ -85,6 +85,7 @@ int	main()
 	char	*way;
 
 	init_w(&w);
+	get_input(w);
 	 if (!run_algo(w))
 	 {
 		 ft_putstr("No way\n");
