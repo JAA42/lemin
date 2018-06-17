@@ -26,9 +26,15 @@ typedef struct		s_pm
 	char	**tubes;
 }					t_pm;
 
-// structure temporaire pour la recursivitee
 typedef struct		way_pm
 {
+
+// parsing 
+
+	
+
+// algo
+
 	int		len;
 	int		ants_count;
 	char	*way;
@@ -42,6 +48,7 @@ t_pm			*init_struct(t_pm *s);
 void			get_datas(t_pm *s);
 
 // axel
+void			get_input(w_pm *w);
 void			init_w(w_pm **w);
 void			send_ants(w_pm *w, int checkpoint_sum, char **way);
 
