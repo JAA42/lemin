@@ -1,6 +1,6 @@
 #include "../inc/lem_in.h"
 
-int			ft_mot(char *str)
+int			ft_motn(char *str)
 {
 	int		i;
 	int		mot;
@@ -9,7 +9,7 @@ int			ft_mot(char *str)
 	mot = 0;
 	while (str[i] != '\0')
 	{
-		if ((str[i + 1] == ' ' && str[i] != ' ') || (str[i] != '\0' &&
+		if ((str[i + 1] == '\n' && str[i] != '\n') || (str[i] != '\0' &&
 			str[i + 1] == '\0'))
 			mot++;
 		i++;
@@ -17,12 +17,12 @@ int			ft_mot(char *str)
 	return (mot);
 }
 
-int				ft_lettre(char *str)
+int				ft_lettren(char *str)
 {
 	int			lettre;
 
 	lettre = 0;
-	while (*str != ' ' && *str != '\0' )
+	while (*str != '\n' && *str != '\0' )
 	{
 		str++;
 		lettre++;
@@ -30,23 +30,23 @@ int				ft_lettre(char *str)
 	return (lettre);
 }
 
-char			**ft_split(char *str)
+char			**ft_split_n(char *str)
 {
 	int			mot;
 	char		**tab;
 	int			i;
 	int			j;
 
-	mot = ft_mot(str);
+	mot = ft_motn(str);
 	tab = (char**)malloc(sizeof(char*) * (mot + 1));
 	i = 0;
 	while (i < mot)
 	{
-		while (*str == ' ' && *str)
+		while (*str == '\n' && *str)
 			str++;
-		tab[i] = (char*)malloc(sizeof(char) * (ft_lettre(str) + 1));
+		tab[i] = (char*)malloc(sizeof(char) * (ft_lettren(str) + 1));
 		j = 0;
-		while (*str != ' ' && *str != '\0')
+		while (*str != '\n' && *str != '\0')
 		{
 			tab[i][j++] = *str;
 			str++;

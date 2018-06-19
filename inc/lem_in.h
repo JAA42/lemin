@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:07:31 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/19 10:42:42 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/19 20:42:22 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,37 +26,53 @@ typedef struct		s_pm
 	char	**tubes;
 }					t_pm;
 
+typedef	struct		s_rooms
+{
+	char	*name;
+	struct s_rooms	*next_tube;
+	struct s_rooms	*next_room;
+
+}					t_rooms;
+
 typedef struct		way_pm
 {
-
-// parsing 
-
-	
-
-// algo
-
-	int		len;
-	int		ants_count;
-	char	*way;
-	char	*exit;
-	char	*entrance;
-	char	***rooms;
+	t_rooms			*first;
+	t_rooms			*last;
+	int				len;
+	int				cmd;
+	int				ants_count;
+	char			*options;
+	int				fd;
+	char			*way;
+	char			*exit;
+	char			*entrance;
+	char			***rooms;
 }					w_pm;
 
 
-t_pm			*init_struct(t_pm *s);
-void			get_datas(t_pm *s);
+t_pm				*init_struct(t_pm *s);
+void				get_datas(t_pm *s);
 
-// axel
-void			get_input(w_pm *w);
-void			init_w(w_pm **w);
-void			send_ants(w_pm *w, int checkpoint_sum, char **way);
+void				cons_to_room(w_pm *w, char **room_data, int i);
+void				print_chained_list(w_pm *w);
+void				update_journey(w_pm *w, int cmd, char *str);
+int					is_cmd_tube(char *line);
+void				get_ants_count(w_pm *w, char *str);
+int					is_comment(char *str);
+int					is_room_ok(w_pm *w, char *str, int *i);
+void				get_input(w_pm *w);
+void				init_w(w_pm **w);
+void				send_ants(w_pm *w, int checkpoint_sum, char **way);
 
 /*
  * LIB
  */
+char			*ft_cattab_str(char **tab, int i);
+int				ft_onlydigit(char *str);
+size_t			tablen(char **src);
 int				ft_strncmp(const char *tab, const char *teub, size_t n);
 char			**ft_split(char *str);
+char			**ft_split_n(char *str);
 int				ft_count_char(char *str, char c);
 char			*ft_str3join_f(char *s1, char *s2, char *s3, int i);
 char			*ft_strdup_f(char *s);

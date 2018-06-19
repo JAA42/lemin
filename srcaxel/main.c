@@ -78,19 +78,28 @@ char	*run_algo(w_pm *w)
 	}
 	return (w->way);
 }
+char	*collect_options(char	**argv)
+{
+	char	*ret;
 
-int	main()
+
+
+	return (ret);
+}
+
+int	main(int argc, char **argv)
 {
 	w_pm	*w;
 	char	*way;
 
 	init_w(&w);
+//	w->options = (argc == 1) ? NULL : collect_options(argv);
 	get_input(w);
 	 if (!run_algo(w))
 	 {
 		 ft_putstr("No way\n");
 		exit(0);
 	}
-	send_ants(w, (ft_count_char(w->way, '\n') + 1), ft_split(w->way));
+	send_ants(w, (ft_count_char(w->way, '\n') + 1), ft_split_n(w->way));
 	return (0);
 }

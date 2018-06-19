@@ -2,7 +2,8 @@
 
 void	init_w(w_pm **w)
 {
-	*w = (w_pm *)malloc(sizeof(w_pm));
+	if (!(*w = (w_pm *)malloc(sizeof(w_pm))))
+		return ;
 
 	/*
 	 * Exit devrat etre fournie par le parsing
@@ -10,11 +11,84 @@ void	init_w(w_pm **w)
 	 * ***rooms devrat etre founir par le parsing
 	 * ants_count doit etre fournie par le parsing
 	 */
+	(*w)->options = ft_strdup("....");
+	(*w)->fd = 0;
+	(*w)->first = NULL;
+	(*w)->last = NULL;
 	(*w)->exit = ft_strdup("0"); 
 	(*w)->entrance = ft_strdup("3"); 
 	(*w)->len = -1;
 	(*w)->ants_count = 4;
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		/* SALLE 1 */
 	
 	(*w)->rooms = (char ***)malloc(sizeof(char **) * 6);

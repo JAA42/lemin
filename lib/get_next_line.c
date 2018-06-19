@@ -6,7 +6,7 @@
 /*   By: avallois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 21:53:17 by avallois          #+#    #+#             */
-/*   Updated: 2018/06/14 15:42:40 by avallois         ###   ########.fr       */
+/*   Updated: 2018/06/19 16:59:12 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int				ft_get_line(char **save, char **line)
 		*save = ft_strchr(*save, '\0');
 		return (1);
 	}
+	if (*save)
+		free(*save);
 	return (0);
 }
 
@@ -64,14 +66,14 @@ int				get_next_line(const int fd, char **line)
 	if (fd == -1 || !line || BUFF_SIZE < 1)
 		return (-1);
 	fcontent = NULL;
+	if (save)
+		return (ft_get_line(&save, &(*line)));
 	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		n = 1;
 		buf[ret] = '\0';
-		if (fcontent == NULL)
-			fcontent = ft_strdup(buf);
-		else
-			fcontent = ft_strjoin_f(fcontent, buf, 1);
+		fcontent = (fcontent == NULL) ? ft_strdup(buf) :
+			ft_strjoin_f(fcontent, buf, 1);
 	}
 	if (n == 1)
 		save = fcontent;
