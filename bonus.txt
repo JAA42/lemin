@@ -1,6 +1,0 @@
-Afficher uniquement le trajet sans les fourmis 
-Forcer les fourmis a passer par ##checkpoint
-entrer une map en parametre
-gerer les nom de salle WTF 
-si erreur : display error type
-
