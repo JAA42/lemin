@@ -90,6 +90,7 @@ int	main()
 		 ft_putstr("No way\n");
 		exit(0);
 	}
-	send_ants(ft_split_n(w->way), ft_count_char(w->way, '\n') + 1);
+	 ft_putstr(w->way);
+//	send_ants(ft_split_n(w->way), ft_count_char(w->way, '\n') + 1);
 	return (0);
 }

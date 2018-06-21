@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 16:58:27 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/21 11:22:50 by avallois         ###   ########.fr       */
+/*   Updated: 2018/06/21 14:43:57 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,6 @@ int		is_room_ok(w_pm *w, char *str, int *n)
 		printf("%s\n", str);
 		free(str);
 		get_next_line(w->fd, &str);
-//		update_journey(w, str);
 	}
 	else if (w->cmd == 3)
 	{
@@ -151,7 +150,6 @@ int		is_room_ok(w_pm *w, char *str, int *n)
 		exit (0);
 	}
 	cons_to_room(w, room_data, i);
-	//free le tableau room data
 	return (0);
 }
 

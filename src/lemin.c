@@ -75,7 +75,9 @@ char	*run_algo(w_pm *w)
 		way = ft_strdup(w->entrance);
 		ptr_start = w->first;
 		while (ft_strcmp(ptr_start->name, w->entrance))
+		{
 			ptr_start = ptr_start->next_room;
+		}
 		ptr_t = ptr_start->next_tube;
 		while (ptr_t)
 		{

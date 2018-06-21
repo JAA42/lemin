@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 18:28:25 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/21 10:49:52 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/21 14:46:30 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,10 @@ void	cons_to_room(w_pm *w, char **room_data, int i)
 {
 	t_rooms	*new;
 
+	if (w->cmd == 1)
+		w->entrance = ft_cattab_str(room_data, i - 2);
+	else if (w->cmd == 2)
+		w->exit = ft_cattab_str(room_data, i - 2);
 	if (!(new = (t_rooms *)malloc(sizeof(t_rooms))))
 		return ;
 	new->name = ft_cattab_str(room_data, i - 2);
