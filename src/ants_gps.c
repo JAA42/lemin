@@ -23,10 +23,28 @@ void	cons_to_way_list(w_pm *w, char *name)
 	}
 }
 
-void	print_gps_data()
+void	print_gps_data(w_pm *w)
 {
-	
+	t_way	*last;
+	t_way	*first;
+	int		count;
 
+	count = w->ants_count;
+	last = w->last_way;
+	first = w->first_way;
+	while ((first->ant != 0 && first) ||
+			ft_strcmp(w->entrance, first->name) == 0)
+	{
+		first->ant++;
+		first->next->ant = first->ant - 1;
+		first = first->next;
+	}
+	while (last)
+	{
+		if (last->ant != 0)
+			printf("L%d->%s|\n", last->ant, last->name);
+		last = last->previous;
+	}
 }
 
 
@@ -51,16 +69,21 @@ void	split_way(w_pm *w)
 		}
 		i++;
 	}
-	print_gps_data(w);
-/*
+	int o;
+	o = 0;
+	while (o++ < 2)
+		print_gps_data(w);
+
+
 	t_way	*ptr;
 
 	ptr = w->first_way;
 	while (ptr)
 	{
-		printf("--%s, end:%s\n", ptr->name, w->exit);
+		printf("--%s--\n", ptr->name);
 		ptr = ptr->next;
 	}
+/*
 	ptr = w->last_way;
 	while (ptr)
 	{

@@ -14,6 +14,6 @@ void	init_w(w_pm **w)
 	(*w)->exit = ft_strdup("0"); 
 	(*w)->entrance = ft_strdup("3"); 
 	(*w)->len = -1;
-	(*w)->ants_count = 4;
+	(*w)->ants_count = 0;
 }
 
