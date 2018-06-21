@@ -1,0 +1,10 @@
+Entre == sortie,
+sortie connectee a rien,
+entree connectee a rien,
+impossible de trouver le chemin
+cordonnees ngatives 
+salle en doubel
+tube en double 
+tube vers salle non existante 
+nombre de fourmis nul ou negatif 
+
