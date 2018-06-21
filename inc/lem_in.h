@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:07:31 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/20 20:56:36 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/21 11:02:30 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 # include <unistd.h>
 # define BUFF_SIZE 4
 
-//ne pas oublier de verifier que les coordonnees sont des entiers
-//
 typedef	struct		s_rooms
 {
 	char	*name;
@@ -46,7 +44,7 @@ typedef struct		way_pm
 void				send_ants(char **way, int checkpoint_sum);
 void				cons_to_room(w_pm *w, char **room_data, int i);
 void				print_chained_list(w_pm *w);
-void				update_journey(w_pm *w, int cmd, char *str);
+void				update_journey(w_pm *w, char *str);
 int					is_cmd_tube(char *line);
 void				get_ants_count(w_pm *w, char *str);
 int					is_comment(char *str);
@@ -57,6 +55,7 @@ void				init_w(w_pm **w);
 /*
  * LIB
  */
+char			*ft_strndup(const char *s, int n);
 char			*ft_cattab_str(char **tab, int i);
 int				ft_onlydigit(char *str);
 size_t			tablen(char **src);

@@ -6,11 +6,19 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 18:28:25 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/20 22:41:28 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/21 10:49:52 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/lem_in.h"
+
+void	update_journey(w_pm *w, char *str)
+{
+	if (w->cmd == 1)
+		w->entrance = ft_strdup(str);
+	else
+		w->exit = ft_strdup(str);
+}
 
 int		is_comment(char *str)
 {
@@ -54,6 +62,7 @@ int		is_cmd_tube(char *line)
 void	print_chained_list(w_pm *w)
 {
 	t_rooms	*ptr;
+	t_rooms	*tube_ptr;
 	int		i;
 
 	ptr = w->first;
@@ -61,6 +70,12 @@ void	print_chained_list(w_pm *w)
 	while (ptr != NULL)
 	{
 		printf("Maillon %d:%s|\n", i++, ptr->name);
+		tube_ptr = ptr->next_tube;
+		while (tube_ptr)
+		{
+			printf("\tTube : %s|\n", tube_ptr->name);
+			tube_ptr = tube_ptr->next_tube;
+		}
 		ptr = ptr->next_room;
 	}
 }
@@ -73,6 +88,7 @@ void	cons_to_room(w_pm *w, char **room_data, int i)
 		return ;
 	new->name = ft_cattab_str(room_data, i - 2);
 	new->next_room = NULL;
+	new->next_tube = NULL;
 	if (w->first)
 	{
 		w->last->next_room = new;

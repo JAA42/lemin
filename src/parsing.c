@@ -6,17 +6,49 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 16:58:27 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/20 22:35:12 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/21 11:04:55 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/lem_in.h"
 
-//void	add_branch()
+int		add_branch_1(t_rooms *r1, char *str, int i, int ref)
+{
+	t_rooms *new_tube;
 
+	while (r1->next_tube != NULL)
+	{
+		if (ft_strcmp(r1->name, str) == 0)
+			return (0);
+		r1 = r1->next_tube;
+	}
+	if (ft_strcmp(r1->name, str) == 0 ||
+			!(new_tube = (t_rooms *)malloc(sizeof(t_rooms))))
+		return (0);
+	r1->next_tube = new_tube;
+	new_tube->next_tube = NULL;
+	new_tube->name = (ref != 1) ? ft_strndup(str, i) : ft_strdup(str + i + 1);
+	return (1);
+}
 
-//}
+void	add_branch_2(t_rooms *r2, char *str, int i, int ref)
+{
+	t_rooms *new_tube;
 
+	while (r2->next_tube != NULL)
+	{
+		if (ft_strcmp(r2->name, str) == 0)
+			return ;
+		r2 = r2->next_tube;
+	}
+	if (ft_strcmp(r2->name, str) == 0 ||
+			!(new_tube = (t_rooms *)malloc(sizeof(t_rooms))))
+		return ;
+	r2->next_tube = new_tube;
+	new_tube->next_tube = NULL;
+	new_tube->name = (ref != 1) ? ft_strdup(str + i + 1) : ft_strndup(str, i);
+	return ;
+}
 
 int		add_to_tubelist(w_pm *w, char *str, int i)
 {
@@ -51,7 +83,8 @@ int		add_to_tubelist(w_pm *w, char *str, int i)
 	}
 	if (n != 2)
 		return (0);
-//	add_branch(w, ptr->name, tmp->name);
+	if (add_branch_1(ptr, str, i, ref))
+		add_branch_2(tmp, str, i, ref);
 	return (1);
 }
 
@@ -96,11 +129,10 @@ int		is_room_ok(w_pm *w, char *str, int *n)
 		printf("%s\n", str);
 		free(str);
 		get_next_line(w->fd, &str);
+//		update_journey(w, str);
 	}
 	else if (w->cmd == 3)
 	{
-		printf("\nRooms to tube:%s\n", str);
-		print_chained_list(w);
 		(*n)++;
 		return (0);
 	}
@@ -145,5 +177,5 @@ void	get_input(w_pm *w)
 		if (i == 3)
 			break ;
 	}
-//	print_chained_list(w);
+	print_chained_list(w);
 }
