@@ -32,19 +32,20 @@ void	print_gps_data(w_pm *w)
 	count = w->ants_count;
 	last = w->last_way;
 	first = w->first_way;
-	while ((first->ant != 0 && first) ||
-			ft_strcmp(w->entrance, first->name) == 0)
+	while (first)
 	{
 		first->ant++;
-		first->next->ant = first->ant - 1;
+		if (first->ant == 1)
+			break;
 		first = first->next;
 	}
 	while (last)
 	{
-		if (last->ant != 0)
-			printf("L%d->%s|\n", last->ant, last->name);
+		if (last->ant != 0 && last->ant <= 10)
+			printf("L%d->%s ", last->ant, last->name);
 		last = last->previous;
 	}
+	printf("\n");
 }
 
 
@@ -69,20 +70,18 @@ void	split_way(w_pm *w)
 		}
 		i++;
 	}
-	int o;
-	o = 0;
-	while (o++ < 2)
+	while (w->last_way->ant != 10)
 		print_gps_data(w);
 
 
-	t_way	*ptr;
+	/*t_way	*ptr;
 
 	ptr = w->first_way;
 	while (ptr)
 	{
 		printf("--%s--\n", ptr->name);
 		ptr = ptr->next;
-	}
+	}*/
 /*
 	ptr = w->last_way;
 	while (ptr)
