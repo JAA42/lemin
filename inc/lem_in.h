@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:07:31 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/21 11:02:30 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/21 15:58:57 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@
 # include <unistd.h>
 # define BUFF_SIZE 4
 
+typedef struct		s_way
+{
+	char			*name;
+	int				ant;
+	struct	s_way	*next;
+	struct	s_way	*previous;
+}					t_way;
+
 typedef	struct		s_rooms
 {
 	char	*name;
@@ -28,6 +36,8 @@ typedef	struct		s_rooms
 
 typedef struct		way_pm
 {
+	t_way			*first_way;
+	t_way			*last_way;
 	t_rooms			*first;
 	t_rooms			*last;
 	int				len;
@@ -41,7 +51,7 @@ typedef struct		way_pm
 	char			***rooms;
 }					w_pm;
 
-void				send_ants(char **way, int checkpoint_sum);
+t_way				*create_way_list(w_pm *w);
 void				cons_to_room(w_pm *w, char **room_data, int i);
 void				print_chained_list(w_pm *w);
 void				update_journey(w_pm *w, char *str);
@@ -51,6 +61,7 @@ int					is_comment(char *str);
 int					is_room_ok(w_pm *w, char *str, int *i);
 void				get_input(w_pm *w);
 void				init_w(w_pm **w);
+void				split_way(w_pm *w);
 
 /*
  * LIB

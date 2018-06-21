@@ -96,11 +96,11 @@ int	main()
 
 	init_w(&w);
 	get_input(w);
-	 if (!run_algo(w))
-	 {
+	if (!run_algo(w))
+	{
 		 ft_putstr("No way\n");
 		exit(0);
 	}
-	send_ants(ft_split_n(w->way), ft_count_char(w->way, '\n') + 1);
+	split_way(w);
 	return (0);
 }

@@ -1,42 +1,70 @@
 #include "../inc/lem_in.h"
 
-void	send_last_ants(char **way, int i, int checkpoint_sum)
+void	cons_to_way_list(w_pm *w, char *name)
 {
-	int	j;
-	i -= 1;
-	while (--i >= 0)
+	t_way	*new;
+
+	if (!(new = (t_way *)malloc(sizeof(t_way))))
+		return ;
+	new->name = ft_strdup(name);
+	new->ant = 0;
+	new->next = NULL;
+	new->previous = NULL;
+	if (w->first_way)
 	{
-		j = 0;
-		while (j <= i)
-		{
-			if (j != 0)
-				printf(" ");
-			printf("L%d-%s", checkpoint_sum - i + j, way[checkpoint_sum - 1 - j]);
-			j++;
-		}
-	printf("\n");
+		new->previous = w->last_way;
+		w->last_way->next = new;
+		w->last_way = new;
+	}
+	else
+	{
+		w->last_way = new;
+		w->first_way = new;
 	}
 }
 
-void	send_ants(char **way, int checkpoint_sum)
+void	print_gps_data()
 {
-	int	i;
-	int	j;
+	
 
-	printf("\n");
+}
+
+
+void	split_way(w_pm *w)
+{
+	int		j;
+	int		i;
+	int		p;
+	char	*name;
+
+	j = ft_strlen(w->way);
 	i = 0;
-	while (i != checkpoint_sum)
+	p = 0;
+	while (i <= j)
 	{
-		j = 0;
-		while (j <= i)
+		if (w->way[i] == '\n' || w->way[i] == '\0' )
 		{
-			if (j != 0)
-				printf(" ");
-			printf("L%d-%s", j + 1, way[i - j]);
-			j++;
+			name = ft_strsub(w->way, p, i - p);
+			cons_to_way_list(w, name);
+			free(name);
+			p = i + 1;
 		}
-	printf("\n");
 		i++;
 	}
-	send_last_ants(way, i, checkpoint_sum);
-}
+	print_gps_data(w);
+/*
+	t_way	*ptr;
+
+	ptr = w->first_way;
+	while (ptr)
+	{
+		printf("--%s, end:%s\n", ptr->name, w->exit);
+		ptr = ptr->next;
+	}
+	ptr = w->last_way;
+	while (ptr)
+	{
+		printf("##%s|\n", ptr->name);
+		ptr = ptr->previous;
+	}
+*/}
