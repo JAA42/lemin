@@ -72,21 +72,4 @@ void	split_way(w_pm *w)
 	}
 	while (w->last_way->ant != 10)
 		print_gps_data(w);
-
-
-	/*t_way	*ptr;
-
-	ptr = w->first_way;
-	while (ptr)
-	{
-		printf("--%s--\n", ptr->name);
-		ptr = ptr->next;
-	}*/
-/*
-	ptr = w->last_way;
-	while (ptr)
-	{
-		printf("##%s|\n", ptr->name);
-		ptr = ptr->previous;
-	}
-*/}
+}
