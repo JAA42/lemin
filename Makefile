@@ -6,7 +6,7 @@
 #    By: avallois <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/13 21:48:44 by avallois          #+#    #+#              #
-#    Updated: 2018/06/21 11:02:41 by adhondt          ###   ########.fr        #
+#    Updated: 2018/06/21 11:23:27 by avallois         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ FLAGS = -Wall -Wextra -Werror
 
 CPP_FLAGS = -Iinclude
 
-NAME = lem_in
+NAME = lem-in
 
 SRC_PATH = ./src
 LIB_PATH = ./lib
