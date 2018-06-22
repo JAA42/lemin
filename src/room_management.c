@@ -6,11 +6,23 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:58:26 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 16:24:26 by avallois         ###   ########.fr       */
+/*   Updated: 2018/06/22 18:08:17 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/lem_in.h"
+
+static void	check_room_validity(char *str)
+{
+	char **room_data;
+	int	i;
+
+	room_data = ft_split(str);
+	i = tablen(room_data);
+	if (tablen(room_data) < 3 || !ft_onlydigit(room_data[i - 1])
+			|| !ft_onlydigit(room_data[i - 2]) || is_cmd_tube(str) != 0)
+		ft_error(2);
+}
 
 static void	cons_to_room_list(t_pm *w, char **room_data, int i)
 {
@@ -48,6 +60,7 @@ int		is_room_ok(t_pm *w, char *str, int *n)
 		printf("%s\n", str);
 		free(str);
 		get_next_line(w->fd, &str);
+		check_room_validity(str);
 	}
 	else if (w->cmd == 3)
 	{

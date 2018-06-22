@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:32:48 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 18:00:22 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/22 18:20:48 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static t_rooms		*get_index(t_pm *w, char *tube)
 static int	simule_way(t_pm *w, t_rooms *tube, char *way, int len)
 {
 	t_rooms *ptr;
+	char	*tmp;
 
 	if (ft_strcmp(tube->name, w->exit) == 0)
 	{
@@ -68,9 +69,9 @@ static int	simule_way(t_pm *w, t_rooms *tube, char *way, int len)
 		//FREE CE QU'IL Y AVAIT DANS w->way maintenant???
 		//w->way = ft_strjoin_f(way, "\n", 1);
 		//w->way = ft_strjoin_f(w->way, tube->name, 1);
-		way = ft_str3join_f(way, "\n", tube->name, 0);
+		tmp = ft_str3join_f(way, "\n", tube->name, 0);
 		ptr = get_index(w, tube->name);
-		simule_way(w, ptr->next_tube, way, ++len);
+		simule_way(w, ptr->next_tube, tmp, ++len);
 	}
 	if (tube->next_tube)
 		simule_way(w, tube->next_tube, way, len);
