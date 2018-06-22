@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:38:50 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 21:45:43 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/22 22:15:15 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ static void	get_input(t_pm *w)
 			get_tube_data(w, line, &i);
 		if (i == 3)
 		{
-		//	free(line);
 			break ;
 		}
+	//	free(line);
 	}
 }
 

@@ -49,8 +49,8 @@ static int	simule_way(t_pm *w, t_rooms *tube, char *way, int len)
 			w->way = ft_strjoin(way, "\n");
 			w->way = ft_strjoin_f(w->way, tube->name, 1);
 			w->len = len;
-			free(way);
 		}
+		free(way);
 		return (0);
 	}
 	else if (first_passage(way, tube->name))
@@ -82,7 +82,7 @@ char	*run_algo(t_pm *w)
 	j = 0;
 	way = NULL;
 	if (ft_strcmp(w->entrance, w->exit) == 0)
-		return (w->way = ft_strdup_f(w->entrance));
+		return (w->way = ft_strdup(w->entrance));
 	else
 	{
 		ptr_start = w->first;
