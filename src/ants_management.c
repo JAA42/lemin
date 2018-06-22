@@ -1,6 +1,6 @@
 #include "../inc/lem_in.h"
 
-static void	cons_to_way_list(w_pm *w, char *name)
+static void	cons_to_way_list(t_pm *w, char *name)
 {
 	t_way	*new;
 
@@ -23,7 +23,7 @@ static void	cons_to_way_list(w_pm *w, char *name)
 	}
 }
 
-static void	print_gps_data(w_pm *w)
+static void	print_gps_data(t_pm *w)
 {
 	t_way	*last;
 	t_way	*first;
@@ -49,7 +49,7 @@ static void	print_gps_data(w_pm *w)
 }
 
 
-void	split_way(w_pm *w)
+void	split_way(t_pm *w)
 {
 	int		j;
 	int		i;
@@ -74,7 +74,7 @@ void	split_way(w_pm *w)
 		print_gps_data(w);
 }
 
-void	get_ants_count(w_pm *w, char *str)
+void	get_ants_count(t_pm *w, char *str)
 {
 	int	i;
 
@@ -82,13 +82,12 @@ void	get_ants_count(w_pm *w, char *str)
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
-		{
-			ft_putstr("Error : Wrong ants number.\n"); // replace by ERROR
-			exit (0);
-		}
+			ft_error(1);
 		i++;
 	}
 	printf("%d\n", ft_atoi(str));
 	w->ants_count = ft_atoi(str);
+	if (w->ants_count == 0)
+		ft_error(1);
 }
 

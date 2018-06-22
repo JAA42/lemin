@@ -6,13 +6,13 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 18:28:25 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 12:33:03 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/22 14:20:06 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/lem_in.h"
 
-void	update_journey(w_pm *w, char *str)
+void	update_journey(t_pm *w, char *str)
 {
 	if (w->cmd == 1)
 		w->entrance = ft_strdup(str);
@@ -41,7 +41,7 @@ int		is_cmd_tube(char *line)
 		return (-1);
 }
 
-void	print_chained_list(w_pm *w)
+void	print_chained_list(t_pm *w)
 {
 	t_rooms	*ptr;
 	t_rooms	*tube_ptr;
@@ -62,3 +62,17 @@ void	print_chained_list(w_pm *w)
 	}
 }
 
+void	ft_error(int error_number)
+{
+	if (error_number == 0)
+		ft_putstr_fd("\n[ERROR : Malloc failed\n", 2);
+	if (error_number == 1)
+		ft_putstr_fd("\n[ERROR : Wrong ants Number]\n", 2);
+	else if (error_number == 2)
+		ft_putstr_fd("\n[ERROR : Wrong room data / Wrong Tube data]\n", 2);
+	else if (error_number == 3)
+		ft_putstr_fd("\n[ERROR : No ##start / No ##end]\n", 2);
+	else if (error_number == 4)
+		ft_putstr_fd("\n[ERROR : No Way for ants freedom]\n", 2);
+	exit (0);
+}

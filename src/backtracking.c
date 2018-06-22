@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:32:48 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 12:39:25 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/22 13:00:16 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	first_passage(char *history, char *room)
 	return (1);
 }
 
-static t_rooms		*get_index(w_pm *w, char *tube)
+static t_rooms		*get_index(t_pm *w, char *tube)
 {
 	t_rooms *ptr;
 
@@ -47,7 +47,7 @@ static t_rooms		*get_index(w_pm *w, char *tube)
 	return (ptr);
 }
 
-static int	simule_way(w_pm *w, t_rooms *room, t_rooms *tube, char *way, int len)
+static int	simule_way(t_pm *w, t_rooms *room, t_rooms *tube, char *way, int len)
 {
 	t_rooms *ptr;
 
@@ -71,7 +71,7 @@ static int	simule_way(w_pm *w, t_rooms *room, t_rooms *tube, char *way, int len)
 	return (0);
 }
 
-char	*run_algo(w_pm *w)
+char	*run_algo(t_pm *w)
 {
 	int	j;
 	char	*way;
@@ -93,7 +93,7 @@ char	*run_algo(w_pm *w)
 			simule_way(w, ptr_start, ptr_tube, way, 0);
 			ptr_tube = ptr_tube->next_tube;
 		}
-		if (ft_strcmp(w->way, w->entrance) == 0)
+		if (w->len == -1)
 			return (NULL);
 	}
 	return (w->way);

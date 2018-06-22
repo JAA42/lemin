@@ -6,18 +6,17 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:38:50 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 12:29:49 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/22 13:00:13 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/lem_in.h"
 
 
-static void	init_w(w_pm **w)
+static void	init_w(t_pm **w)
 {
-	if (!(*w = (w_pm *)malloc(sizeof(w_pm))))
-		return ;
-
+	if (!(*w = (t_pm *)malloc(sizeof(t_pm))))
+		ft_error(0);
 	(*w)->options = ft_strdup("....");
 	(*w)->fd = 0;
 	(*w)->first = NULL;
@@ -29,7 +28,7 @@ static void	init_w(w_pm **w)
 	(*w)->len = -1;
 	(*w)->ants_count = 0;
 }
-static void	get_input(w_pm *w)
+static void	get_input(t_pm *w)
 {
 	char	*line;
 	int		i;
@@ -51,20 +50,16 @@ static void	get_input(w_pm *w)
 		if (i == 3)
 			break ;
 	}
-//	print_chained_list(w);
 }
 
 int	main()
 {
-	w_pm	*w;
+	t_pm	*w;
 
 	init_w(&w);
 	get_input(w);
 	if (!run_algo(w))
-	{
-		 ft_putstr("No way\n");
-		exit(0);
-	}
+		ft_error(4);
 	split_way(w);
 	return (0);
 }

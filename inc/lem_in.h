@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:07:31 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 12:40:59 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/22 13:00:10 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef	struct		s_rooms
 
 }					t_rooms;
 
-typedef struct		way_pm
+typedef struct		s_pm
 {
 	t_way			*first_way;
 	t_way			*last_way;
@@ -49,16 +49,17 @@ typedef struct		way_pm
 	char			*exit;
 	char			*entrance;
 	char			***rooms;
-}					w_pm;
+}					t_pm;
 
-void				get_tube_data(w_pm *w, char *str, int *n);
-char				*run_algo(w_pm *w);
-void				print_chained_list(w_pm *w);
+void				get_tube_data(t_pm *w, char *str, int *n);
+char				*run_algo(t_pm *w);
+void				print_chained_list(t_pm *w);
 int					is_cmd_tube(char *line);
-void				get_ants_count(w_pm *w, char *str);
+void				get_ants_count(t_pm *w, char *str);
 int					is_comment(char *str);
-int					is_room_ok(w_pm *w, char *str, int *i);
-void				split_way(w_pm *w);
+int					is_room_ok(t_pm *w, char *str, int *i);
+void				split_way(t_pm *w);
+void				ft_error(int error_number);
 
 /*
  * LIB
@@ -73,7 +74,6 @@ char			**ft_split_n(char *str);
 int				ft_count_char(char *str, char c);
 char			*ft_str3join_f(char *s1, char *s2, char *s3, int i);
 char			*ft_strdup_f(char *s);
-void			ft_error(void);
 char			*ft_str3join(char const *s1, char const *s2, char *s3);
 int				get_next_line(const int fd, char **line);
 char			*ft_strcat(char *dest, const char *src);

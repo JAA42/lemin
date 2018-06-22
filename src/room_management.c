@@ -6,13 +6,13 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:58:26 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 12:34:49 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/22 14:19:44 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/lem_in.h"
 
-static void	cons_to_room_list(w_pm *w, char **room_data, int i)
+static void	cons_to_room_list(t_pm *w, char **room_data, int i)
 {
 	t_rooms	*new;
 
@@ -37,7 +37,7 @@ static void	cons_to_room_list(w_pm *w, char **room_data, int i)
 	}
 }
 
-int		is_room_ok(w_pm *w, char *str, int *n)
+int		is_room_ok(t_pm *w, char *str, int *n)
 {
 	int	i;
 	char	**room_data;
@@ -52,6 +52,8 @@ int		is_room_ok(w_pm *w, char *str, int *n)
 	else if (w->cmd == 3)
 	{
 		(*n)++;
+		if (w->entrance == NULL || w->exit == NULL)
+			ft_error(3);
 		return (0);
 	}
 	else if (w->cmd == -1)
@@ -64,10 +66,7 @@ int		is_room_ok(w_pm *w, char *str, int *n)
 	i = tablen(room_data);
 	if (tablen(room_data) < 3 || !ft_onlydigit(room_data[i - 1])
 			|| !ft_onlydigit(room_data[i - 2]))
-	{
-		ft_putstr("ERROR : room not ok\n");
-		exit (0);
-	}
+		ft_error(2);
 	cons_to_room_list(w, room_data, i);
 	return (0);
 }

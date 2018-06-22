@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:50:13 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 12:42:00 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/22 14:16:50 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	add_branch_2(t_rooms *r2, char *str, int i, int ref)
 	return ;
 }
 
-static int		add_to_tubelist(w_pm *w, char *str, int i)
+static int		add_to_tubelist(t_pm *w, char *str, int i)
 {
 	t_rooms	*ptr;
 	t_rooms	*tmp;
@@ -88,7 +88,7 @@ static int		add_to_tubelist(w_pm *w, char *str, int i)
 	return (1);
 }
 
-void	get_tube_data(w_pm *w, char *str, int *n)
+void	get_tube_data(t_pm *w, char *str, int *n)
 {
 	int	i;
 
@@ -98,8 +98,11 @@ void	get_tube_data(w_pm *w, char *str, int *n)
 	printf("%s\n", str);
 	if (!add_to_tubelist(w, str, i))
 	{
+		if (!w->first)
+			ft_error(2);
+		else
+			ft_putstr_fd("\n[ERROR: Bad tube data]\n\n", 2);
 		(*n)++;
-		printf("error tubelist\n");
 	}
 	else
 	{

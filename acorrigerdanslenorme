@@ -1,0 +1,13 @@
+dans parsing.c dans la ligne 104 mettre au lieu de printf("Merde"):
+en dessous de !addtubelist(): dans get_tube_data
+ft_putstr("Error: No rooms or wrong tube");
+exit(0);
+
+
+mettre au de but de get_tube_data:
+if (w->entrance == NULL || w->exit == NULL)
+{
+	ft_putstr("Error: No ##start and/or ##end entry\n");
+	exit(0);
+}
+
