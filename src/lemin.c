@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:38:50 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 14:43:07 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/22 16:24:13 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	init_w(t_pm **w)
 {
 	if (!(*w = (t_pm *)malloc(sizeof(t_pm))))
 		ft_error(0);
-	(*w)->options = ft_strdup("....");
+	(*w)->options = NULL;
 	(*w)->fd = 0;
 	(*w)->first = NULL;
 	(*w)->last = NULL;
@@ -48,7 +48,50 @@ static void	get_input(t_pm *w)
 		if (w->cmd != 1 || w->cmd != 2)
 			free(line);
 		if (i == 3)
+		{
+			free(line);
 			break ;
+		}
+	}
+}
+
+void	free_rooms_list(t_pm *w)
+{
+	t_rooms *ptr;
+	t_rooms *tmp;
+	t_rooms *ptr2;
+	t_rooms *tmp2;
+
+	ptr = w->first;
+	while(ptr)
+	{
+		ptr2 = ptr->next_tube;
+		while (ptr2)
+		{
+			free(ptr2->name);
+			tmp2 = ptr2->next_tube;
+			free(ptr2);
+			ptr2 = tmp2;
+		}
+		free(ptr->name);
+		tmp = ptr->next_room;
+		free(ptr);
+		ptr = tmp;
+	}
+}
+
+void	free_way_list(t_pm *w)
+{
+	t_way *ptr;
+	t_way *tmp;
+
+	ptr = w->first_way;
+	while (ptr)
+	{
+		free(ptr->name);
+		tmp = ptr->next;
+		free(ptr);
+		ptr = tmp;
 	}
 }
 
@@ -62,5 +105,7 @@ int	main()
 	if (!run_algo(w))
 		ft_error(4);
 	split_way(w);
+	free_rooms_list(w);
+	free_way_list(w);
 	return (0);
 }
