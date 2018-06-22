@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:58:26 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 21:52:22 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/22 22:26:08 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ int		is_room_ok(t_pm *w, char *str, int *n)
 	else if (w->cmd == -1)
 	{
 		printf("%s\n", str);
+		free(str);
 		return (0);
 	}
 	printf("%s\n", str);
@@ -92,6 +93,7 @@ int		is_room_ok(t_pm *w, char *str, int *n)
 	i = 0;
 	while (room_data[i])
 		free(room_data[i++]);
-				free(room_data);
+	free(room_data);
+	free(str);
 	return (0);
 }

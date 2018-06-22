@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:50:13 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 16:24:40 by avallois         ###   ########.fr       */
+/*   Updated: 2018/06/22 22:19:55 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,5 @@ void	get_tube_data(t_pm *w, char *str, int *n)
 			ft_putstr_fd("\n\033[1;31m[ERROR: Bad tube data]\033[0m\n", 2);
 		(*n)++;
 	}
-	else
-	{
-	
-	
-	}
+	free(str);
 }
