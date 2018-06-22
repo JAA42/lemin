@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:38:50 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 22:41:09 by avallois         ###   ########.fr       */
+/*   Updated: 2018/06/22 22:46:24 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ static void	get_input(t_pm *w)
 	while (get_next_line(w->fd, &line) > 0)
 	{
 		if (is_comment(line))
+		{
 			printf("%s\n", line);
+			free(line);
+		}
 		else if (i == 0 && (i = 1))
 			get_ants_count(w, line);
 		else if (i == 1)
@@ -99,10 +102,9 @@ int	main()
 
 	init_w(&w);
 	get_input(w);
-	print_chained_list(w);
+	//print_chained_list(w);
 	if (!run_algo(w))
 		ft_error(4);
-	printf("yooyoyo\n");
 	split_way(w);
 	free_rooms_list(w);
 	free_way_list(w);

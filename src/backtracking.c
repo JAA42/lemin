@@ -55,7 +55,6 @@ static int	simule_way(t_pm *w, t_rooms *tube, char *way, int len)
 	}
 	else if (first_passage(way, tube->name))
 	{
-		printf("yayaya\n");
 		tmp = ft_strjoin(way, "\n");
 		tmp2 = ft_strjoin(tmp, tube->name);
 		free(tmp);
@@ -64,10 +63,7 @@ static int	simule_way(t_pm *w, t_rooms *tube, char *way, int len)
 		free(tmp2);
 	}
 	if (tube->next_tube)
-	{
-		printf("Plop\n");
 		simule_way(w, tube->next_tube, ft_strdup(way), len);
-	}
 	free(way);
 	return (0);
 }
