@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:32:48 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 13:00:16 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/22 14:55:56 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static int	simule_way(t_pm *w, t_rooms *room, t_rooms *tube, char *way, int len)
 		ptr = get_index(w, tube->name);
 		simule_way(w, ptr, ptr->next_tube, way, ++len);
 	}
-	else if (tube->next_tube)
+	if (tube->next_tube)
 		simule_way(w, room, tube->next_tube, way, len);
 	return (0);
 }
@@ -79,6 +79,7 @@ char	*run_algo(t_pm *w)
 	t_rooms *ptr_tube;
 
 	j = 0;
+	
 	if (ft_strcmp(w->entrance, w->exit) == 0)
 		return (w->way = ft_strdup_f(w->entrance));
 	else
@@ -86,7 +87,9 @@ char	*run_algo(t_pm *w)
 		way = ft_strdup(w->entrance);
 		ptr_start = w->first;
 		while (ft_strcmp(ptr_start->name, w->entrance) != 0)
+		{
 			ptr_start = ptr_start->next_room;
+		}
 		ptr_tube = ptr_start->next_tube;
 		while (ptr_tube)
 		{
