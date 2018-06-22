@@ -56,6 +56,7 @@ void	split_way(t_pm *w)
 	int		p;
 	char	*name;
 
+	w->way = ft_strdup(w->way);
 	j = ft_strlen(w->way);
 	i = 0;
 	p = 0;

@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:32:48 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 20:39:56 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/22 21:13:42 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static int	simule_way(t_pm *w, t_rooms *tube, char *way, int len)
 {
 	t_rooms *ptr;
 	char	*tmp;
+	char	*tmp2;
 
 	printf("tube->name:%s/|\n", tube->name);
 	if (ft_strcmp(tube->name, w->exit) == 0)
@@ -68,11 +69,12 @@ static int	simule_way(t_pm *w, t_rooms *tube, char *way, int len)
 	else if (first_passage(way, tube->name))
 	{
 		printf("yayaya\n");
-		tmp = ft_strjoin_f(way, "\n", 0);
-		tmp = ft_strjoin_f(tmp, tube->name, 1);
+		tmp = ft_strjoin(way, "\n");
+		tmp2 = ft_strjoin(tmp, tube->name);
+		free(tmp);
 		ptr = get_index(w, tube->name);
-		simule_way(w, ptr->next_tube, tmp, ++len);
-		//free(tmp);
+		simule_way(w, ptr->next_tube, tmp2, ++len);
+		free(tmp2);
 	}
 	if (tube->next_tube)
 	{
@@ -111,6 +113,6 @@ char	*run_algo(t_pm *w)
 		if (w->len == -1)
 			return (NULL);
 	}
-	return (w->way);
+	return ("bonjour");
 }
 
