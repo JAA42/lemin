@@ -5,7 +5,7 @@ static void	cons_to_way_list(t_pm *w, char *name)
 	t_way	*new;
 
 	if (!(new = (t_way *)malloc(sizeof(t_way))))
-		return ;
+		ft_error(0);
 	new->name = ft_strdup(name);
 	new->ant = 0;
 	new->next = NULL;
@@ -70,6 +70,7 @@ void	split_way(t_pm *w)
 		}
 		i++;
 	}
+	printf("\n");
 	while (w->last_way->ant != w->ants_count)
 		print_gps_data(w);
 }

@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:50:13 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 14:16:50 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/22 14:36:16 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ static int		add_branch_1(t_rooms *r1, char *str, int i, int ref)
 			return (0);
 		r1 = r1->next_tube;
 	}
-	if (ft_strcmp(r1->name, str) == 0 ||
-			!(new_tube = (t_rooms *)malloc(sizeof(t_rooms))))
+	if (ft_strcmp(r1->name, str) == 0)
 		return (0);
+	else if (!(new_tube = (t_rooms *)malloc(sizeof(t_rooms))))
+		ft_error(0);
 	r1->next_tube = new_tube;
 	new_tube->next_tube = NULL;
 	new_tube->name = (ref != 1) ? ft_strndup(str, i) : ft_strdup(str + i + 1);
@@ -41,9 +42,10 @@ static void	add_branch_2(t_rooms *r2, char *str, int i, int ref)
 			return ;
 		r2 = r2->next_tube;
 	}
-	if (ft_strcmp(r2->name, str) == 0 ||
-			!(new_tube = (t_rooms *)malloc(sizeof(t_rooms))))
+	if (ft_strcmp(r2->name, str) == 0)
 		return ;
+	else if (!(new_tube = (t_rooms *)malloc(sizeof(t_rooms))))
+		ft_error(0);
 	r2->next_tube = new_tube;
 	new_tube->next_tube = NULL;
 	new_tube->name = (ref != 1) ? ft_strdup(str + i + 1) : ft_strndup(str, i);
@@ -101,7 +103,7 @@ void	get_tube_data(t_pm *w, char *str, int *n)
 		if (!w->first)
 			ft_error(2);
 		else
-			ft_putstr_fd("\n[ERROR: Bad tube data]\n\n", 2);
+			ft_putstr_fd("\n\033[1;31m[ERROR: Bad tube data]\033[0m\n", 2);
 		(*n)++;
 	}
 	else

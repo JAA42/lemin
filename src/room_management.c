@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:58:26 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 14:19:44 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/22 14:37:11 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	cons_to_room_list(t_pm *w, char **room_data, int i)
 	else if (w->cmd == 2)
 		w->exit = ft_cattab_str(room_data, i - 2);
 	if (!(new = (t_rooms *)malloc(sizeof(t_rooms))))
-		return ;
+		ft_error(0);
 	new->name = ft_cattab_str(room_data, i - 2);
 	new->next_room = NULL;
 	new->next_tube = NULL;
