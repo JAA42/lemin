@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:32:48 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 20:27:33 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/22 20:36:28 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ static int	simule_way(t_pm *w, t_rooms *tube, char *way, int len)
 	{
 		printf("yayaya\n");
 		tmp = ft_strjoin_f(way, "\n", 0);
-		tmp = ft_strjoin_f(tmp, tube->name, 0);
+		tmp = ft_strjoin_f(tmp, tube->name, 1);
 		ptr = get_index(w, tube->name);
 		simule_way(w, ptr->next_tube, tmp, ++len);
-		free(tmp);
+		//free(tmp);
 	}
 	if (tube->next_tube)
 	{
@@ -103,10 +103,9 @@ char	*run_algo(t_pm *w)
 		while (ptr_tube)
 		{
 			simule_way(w, ptr_tube, way, 0);
-			//free(way);
-			
 			ptr_tube = ptr_tube->next_tube;
 		}
+		//free(way);
 		if (w->len == -1)
 			return (NULL);
 	}

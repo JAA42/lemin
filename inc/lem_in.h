@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:07:31 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 13:00:10 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/22 20:35:49 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void			*ft_memalloc_c(size_t size, int c);
 char			*ft_itoa(int n);
 char			*ft_itoa_base(int value, int base, int upper);
 char			*ft_strjoin(char const *s1, char const *s2);
-char			*ft_strjoin_f(char const *s1, char const *s2, int j);
+char			*ft_strjoin_f(char *s1, char *s2, int j);
 char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_strchr(const char *s, int c);
 int				ft_isdigit(int c);
