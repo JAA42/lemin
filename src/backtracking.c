@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:32:48 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 20:36:28 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/22 20:39:27 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ static int	simule_way(t_pm *w, t_rooms *tube, char *way, int len)
 			w->way = ft_strjoin_f(w->way, tube->name, 1);
 			w->len = len;
 		}
+		free(way);
+		return (0);
 	}
 	else if (first_passage(way, tube->name))
 	{
