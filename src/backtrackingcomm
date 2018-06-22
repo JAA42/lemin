@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:32:48 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 18:00:22 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/22 16:44:08 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static int	first_passage(char *history, char *room)
 	int	i;
 	int	j;
 
+	printf("yeah\n");
 	j = 0;
 	i = 0;
 	while (history[i])
@@ -50,30 +51,35 @@ static t_rooms		*get_index(t_pm *w, char *tube)
 static int	simule_way(t_pm *w, t_rooms *tube, char *way, int len)
 {
 	t_rooms *ptr;
+	char	*tmp;
 
-	if (ft_strcmp(tube->name, w->exit) == 0)
+	printf("=====312, tube->name:%s|\n", tube->name);
+	if (printf("b1:tubename:%s\n", tube->name) && ft_strcmp(tube->name, w->exit) == 0)
 	{
+		printf("------1\n");
 		if (len < w->len || w->len == -1)
 		{
-			//FREE CE QU'IL Y AVAIT DANS w->way maintenant???
 				w->way = ft_str3join(way, "\n", tube->name);
-				//w->way = ft_strjoin_f(way, "\n", 1);
-				//w->way = ft_strjoin_f(w->way, tube->name, 1);
 				w->len = len;
 				free(way);
 		}
 	}
-	else if (first_passage(way, tube->name))
+	else if (printf("b2\n") && first_passage(way, tube->name))
 	{
-		//FREE CE QU'IL Y AVAIT DANS w->way maintenant???
-		//w->way = ft_strjoin_f(way, "\n", 1);
-		//w->way = ft_strjoin_f(w->way, tube->name, 1);
-		way = ft_str3join_f(way, "\n", tube->name, 0);
+		printf("------2\n");
+		tmp = ft_str3join_f(way, "\n", tube->name, 0);
 		ptr = get_index(w, tube->name);
-		simule_way(w, ptr->next_tube, way, ++len);
+		printf("-------2B:tube->name:%s\n", ptr->name);
+		if (ptr->next_tube)
+			simule_way(w, ptr->next_tube, tmp, ++len);
+		else
+			return (0);
 	}
-	if (tube->next_tube)
+	if (printf("b3\n") && tube->next_tube)
+	{
+		printf("yep\n");
 		simule_way(w, tube->next_tube, way, len);
+	}
 	return (0);
 }
 
@@ -85,7 +91,6 @@ char	*run_algo(t_pm *w)
 	t_rooms *ptr_tube;
 
 	j = 0;
-	
 	if (ft_strcmp(w->entrance, w->exit) == 0)
 		return (w->way = ft_strdup_f(w->entrance));
 	else
