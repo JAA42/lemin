@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:32:48 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 18:20:48 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/22 19:59:25 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,34 +47,34 @@ static t_rooms		*get_index(t_pm *w, char *tube)
 	return (ptr);
 }
 
-static int	simule_way(t_pm *w, t_rooms *tube, char *way, int len)
+static int	simule_way(t_pm *w, t_rooms *room, t_rooms *tube, char *way, int len)
 {
 	t_rooms *ptr;
-	char	*tmp;
 
 	if (ft_strcmp(tube->name, w->exit) == 0)
 	{
 		if (len < w->len || w->len == -1)
 		{
 			//FREE CE QU'IL Y AVAIT DANS w->way maintenant???
-				w->way = ft_str3join(way, "\n", tube->name);
-				//w->way = ft_strjoin_f(way, "\n", 1);
-				//w->way = ft_strjoin_f(w->way, tube->name, 1);
-				w->len = len;
-				free(way);
+			//w->way = ft_str3join(way, "\n", tube->name);
+			free(w->way);
+			w->way = ft_strjoin_f(way, "\n", 1);
+			w->way = ft_strjoin_f(w->way, tube->name, 1);
+			w->len = len;
 		}
 	}
 	else if (first_passage(way, tube->name))
 	{
 		//FREE CE QU'IL Y AVAIT DANS w->way maintenant???
-		//w->way = ft_strjoin_f(way, "\n", 1);
-		//w->way = ft_strjoin_f(w->way, tube->name, 1);
-		tmp = ft_str3join_f(way, "\n", tube->name, 0);
+		way = ft_strjoin_f(way, "\n", 1);
+		way = ft_strjoin_f(way, tube->name, 1);
+
+		//	way = ft_str3join_f(way, "\n", tube->name, 0);
 		ptr = get_index(w, tube->name);
-		simule_way(w, ptr->next_tube, tmp, ++len);
+		simule_way(w, ptr, ptr->next_tube, way, ++len);
 	}
 	if (tube->next_tube)
-		simule_way(w, tube->next_tube, way, len);
+		simule_way(w, room, tube->next_tube, way, len);
 	return (0);
 }
 
@@ -86,7 +86,7 @@ char	*run_algo(t_pm *w)
 	t_rooms *ptr_tube;
 
 	j = 0;
-	
+	way = NULL;
 	if (ft_strcmp(w->entrance, w->exit) == 0)
 		return (w->way = ft_strdup_f(w->entrance));
 	else
@@ -100,7 +100,8 @@ char	*run_algo(t_pm *w)
 		ptr_tube = ptr_start->next_tube;
 		while (ptr_tube)
 		{
-			simule_way(w, ptr_tube, way, 0);
+			simule_way(w, ptr_start, ptr_tube, way, 0);
+			free(way);
 			ptr_tube = ptr_tube->next_tube;
 		}
 		if (w->len == -1)
