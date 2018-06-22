@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:38:50 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 21:27:29 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/22 21:45:43 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,9 @@ static void	get_input(t_pm *w)
 			is_room_ok(w, line, &i);
 		if (i == 2 && !is_comment(line))
 			get_tube_data(w, line, &i);
-		if (w->cmd != 1 || w->cmd != 2)
-			free(line);
 		if (i == 3)
 		{
-			free(line);
+		//	free(line);
 			break ;
 		}
 	}
@@ -64,7 +62,7 @@ void	free_rooms_list(t_pm *w)
 	t_rooms *tmp2;
 
 	ptr = w->first;
-	while(ptr)
+	while (ptr)
 	{
 		ptr2 = ptr->next_tube;
 		while (ptr2)

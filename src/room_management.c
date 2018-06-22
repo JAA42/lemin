@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:58:26 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 18:08:17 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/22 21:52:22 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,20 @@ static void	check_room_validity(char *str)
 {
 	char **room_data;
 	int	i;
+	int j;
 
+	j = 0;
 	room_data = ft_split(str);
 	i = tablen(room_data);
 	if (tablen(room_data) < 3 || !ft_onlydigit(room_data[i - 1])
 			|| !ft_onlydigit(room_data[i - 2]) || is_cmd_tube(str) != 0)
 		ft_error(2);
+	else
+	{
+		while (room_data[j])
+			free(room_data[j++]);
+		free(room_data);
+	}
 }
 
 static void	cons_to_room_list(t_pm *w, char **room_data, int i)
@@ -81,5 +89,9 @@ int		is_room_ok(t_pm *w, char *str, int *n)
 			|| !ft_onlydigit(room_data[i - 2]))
 		ft_error(2);
 	cons_to_room_list(w, room_data, i);
+	i = 0;
+	while (room_data[i])
+		free(room_data[i++]);
+				free(room_data);
 	return (0);
 }
