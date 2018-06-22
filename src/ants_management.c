@@ -91,5 +91,6 @@ void	get_ants_count(t_pm *w, char *str)
 	w->ants_count = ft_atoi(str);
 	if (w->ants_count == 0)
 		ft_error(1);
+	free(str);
 }
 

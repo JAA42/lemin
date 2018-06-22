@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:38:50 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 22:15:15 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/22 22:41:09 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	init_w(t_pm **w)
 	(*w)->exit = NULL;
 	(*w)->entrance = NULL;
 	(*w)->len = -1;
-	(*w)->way = ft_strdup("\0");
+	(*w)->way = NULL;
 	(*w)->ants_count = 0;
 }
 static void	get_input(t_pm *w)
@@ -50,7 +50,6 @@ static void	get_input(t_pm *w)
 		{
 			break ;
 		}
-	//	free(line);
 	}
 }
 
@@ -108,5 +107,8 @@ int	main()
 	free_rooms_list(w);
 	free_way_list(w);
 	free(w->way);
+	free(w->entrance);
+	free(w->exit);
+	free(w);
 	return (0);
 }
