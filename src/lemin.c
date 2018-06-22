@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:38:50 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 21:01:50 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/22 21:27:29 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ int	main()
 	print_chained_list(w);
 	if (!run_algo(w))
 		ft_error(4);
+	printf("yooyoyo\n");
 	split_way(w);
 	free_rooms_list(w);
 	free_way_list(w);

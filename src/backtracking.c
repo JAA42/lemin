@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   backtracking.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/22 11:32:48 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 21:13:42 by adhondt          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../inc/lem_in.h"
 
 static int	first_passage(char *history, char *room)
@@ -53,16 +41,15 @@ static int	simule_way(t_pm *w, t_rooms *tube, char *way, int len)
 	char	*tmp;
 	char	*tmp2;
 
-	printf("tube->name:%s/|\n", tube->name);
 	if (ft_strcmp(tube->name, w->exit) == 0)
 	{
-	printf("FINISH\n\n");
 		if (len < w->len || w->len == -1)
 		{
 			free(w->way);
-			w->way = ft_strjoin_f(way, "\n", 1);
+			w->way = ft_strjoin(way, "\n");
 			w->way = ft_strjoin_f(w->way, tube->name, 1);
 			w->len = len;
+			free(way);
 		}
 		return (0);
 	}
@@ -73,14 +60,15 @@ static int	simule_way(t_pm *w, t_rooms *tube, char *way, int len)
 		tmp2 = ft_strjoin(tmp, tube->name);
 		free(tmp);
 		ptr = get_index(w, tube->name);
-		simule_way(w, ptr->next_tube, tmp2, ++len);
+		simule_way(w, ptr->next_tube, ft_strdup(tmp2), ++len);
 		free(tmp2);
 	}
 	if (tube->next_tube)
 	{
 		printf("Plop\n");
-		simule_way(w, tube->next_tube, way, len);
+		simule_way(w, tube->next_tube, ft_strdup(way), len);
 	}
+	free(way);
 	return (0);
 }
 
@@ -97,7 +85,6 @@ char	*run_algo(t_pm *w)
 		return (w->way = ft_strdup_f(w->entrance));
 	else
 	{
-		way = ft_strdup(w->entrance);
 		ptr_start = w->first;
 		while (ft_strcmp(ptr_start->name, w->entrance) != 0)
 		{
@@ -106,10 +93,9 @@ char	*run_algo(t_pm *w)
 		ptr_tube = ptr_start->next_tube;
 		while (ptr_tube)
 		{
-			simule_way(w, ptr_tube, way, 0);
+			simule_way(w, ptr_tube, ft_strdup(w->entrance), 0);
 			ptr_tube = ptr_tube->next_tube;
 		}
-		//free(way);
 		if (w->len == -1)
 			return (NULL);
 	}
