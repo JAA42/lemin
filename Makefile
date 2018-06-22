@@ -6,7 +6,7 @@
 #    By: avallois <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/13 21:48:44 by avallois          #+#    #+#              #
-#    Updated: 2018/06/21 13:59:17 by avallois         ###   ########.fr        #
+#    Updated: 2018/06/22 12:42:22 by adhondt          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ INC_PATH = ./inc
 OBJ_PATH = ./obj
 OBJLIB_PATH = ./obj
 
-SRC_NAME =	 lemin.c ants_gps.c parsing.c parsing_tools.c structure.c \
+SRC_NAME =	 lemin.c backtracking.c ants_management.c room_management.c \
+			 tube_management.c parsing_tools.c \
 
 LIB_NAME = 	ft_putchar.c ft_putstr.c ft_chardup.c ft_strdup.c \
 			ft_itoa.c ft_atoi.c ft_itoa_base.c ft_memalloc.c ft_memalloc_c.c \

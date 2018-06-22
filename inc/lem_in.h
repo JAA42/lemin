@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:07:31 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/21 15:58:57 by avallois         ###   ########.fr       */
+/*   Updated: 2018/06/22 12:40:59 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,13 @@ typedef struct		way_pm
 	char			***rooms;
 }					w_pm;
 
-t_way				*create_way_list(w_pm *w);
-void				cons_to_room(w_pm *w, char **room_data, int i);
+void				get_tube_data(w_pm *w, char *str, int *n);
+char				*run_algo(w_pm *w);
 void				print_chained_list(w_pm *w);
-void				update_journey(w_pm *w, char *str);
 int					is_cmd_tube(char *line);
 void				get_ants_count(w_pm *w, char *str);
 int					is_comment(char *str);
 int					is_room_ok(w_pm *w, char *str, int *i);
-void				get_input(w_pm *w);
-void				init_w(w_pm **w);
 void				split_way(w_pm *w);
 
 /*

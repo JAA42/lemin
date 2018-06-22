@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 18:28:25 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/21 14:46:30 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/22 12:33:03 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,6 @@ void	update_journey(w_pm *w, char *str)
 int		is_comment(char *str)
 {
 	return (str[0] == '#' && str[1] != '#');
-}
-
-void	get_ants_count(w_pm *w, char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-		{
-			ft_putstr("Error : Wrong ants number.\n"); // replace by ERROR
-			exit (0);
-		}
-		i++;
-	}
-	printf("%d\n", ft_atoi(str));
-	w->ants_count = ft_atoi(str);
 }
 
 int		is_cmd_tube(char *line)
@@ -80,27 +62,3 @@ void	print_chained_list(w_pm *w)
 	}
 }
 
-void	cons_to_room(w_pm *w, char **room_data, int i)
-{
-	t_rooms	*new;
-
-	if (w->cmd == 1)
-		w->entrance = ft_cattab_str(room_data, i - 2);
-	else if (w->cmd == 2)
-		w->exit = ft_cattab_str(room_data, i - 2);
-	if (!(new = (t_rooms *)malloc(sizeof(t_rooms))))
-		return ;
-	new->name = ft_cattab_str(room_data, i - 2);
-	new->next_room = NULL;
-	new->next_tube = NULL;
-	if (w->first)
-	{
-		w->last->next_room = new;
-		w->last = new;
-	}
-	else
-	{
-		w->last = new;
-		w->first = new;
-	}
-}
