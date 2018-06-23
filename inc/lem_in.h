@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:07:31 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 20:35:49 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/23 17:23:41 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ typedef struct		s_way
 	struct	s_way	*next;
 	struct	s_way	*previous;
 }					t_way;
+
+typedef	struct		s_history
+{
+	char			*way;
+	struct history	*next;
+}					t_hist;
 
 typedef	struct		s_rooms
 {
@@ -45,7 +51,8 @@ typedef struct		s_pm
 	int				ants_count;
 	char			*options;
 	int				fd;
-	char			*way;
+	t_hist			*way;
+	t_hist			*waylist;
 	char			*exit;
 	char			*entrance;
 	char			***rooms;

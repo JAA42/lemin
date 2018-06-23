@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 18:28:25 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 15:50:05 by avallois         ###   ########.fr       */
+/*   Updated: 2018/06/23 16:59:54 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	print_chained_list(t_pm *w)
 void	ft_error(int error_number)
 {
 	if (error_number == 0)
-		ft_putstr_fd("\n\033[1;31m[ERROR : Malloc failed\033[0m\n", 2);
+		ft_putstr_fd("\n\033[1;31m[ERROR : Malloc failed]\033[0m\n", 2);
 	if (error_number == 1)
 		ft_putstr_fd("\n\033[1;31m[ERROR : Wrong ants Number]\033[0m\n", 2);
 	else if (error_number == 2)
