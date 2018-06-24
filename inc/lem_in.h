@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:07:31 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/24 17:34:13 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/24 20:39:43 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct		s_pm
 	char			***rooms;
 }					t_pm;
 
+void				send_ants_to_freedom(t_pm *w);
 void				get_tube_data(t_pm *w, char *str, int *n);
 char				*run_algo(t_pm *w);
 void				print_chained_list(t_pm *w);
@@ -61,7 +62,6 @@ int					is_cmd_tube(char *line);
 void				get_ants_count(t_pm *w, char *str);
 int					is_comment(char *str);
 int					is_room_ok(t_pm *w, char *str, int *i);
-void				split_way(t_pm *w);
 void				ft_error(int error_number);
 
 /*

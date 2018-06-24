@@ -48,30 +48,9 @@ static void	print_gps_data(t_pm *w)
 	printf("\n");
 }
 
-
-void	split_way(t_pm *w)
+void	send_ants_to_freedom(t_pm *w)
 {
-	int		j;
-	int		i;
-	int		p;
-	char	*name;
-
-//	w->way = ft_strdup(w->way);
-	j = ft_strlen(w->way);
-	i = 0;
-	p = 0;
-	while (i <= j)
-	{
-		if (w->way[i] == '\n' || w->way[i] == '\0' )
-		{
-			name = ft_strsub(w->way, p, i - p);
-			cons_to_way_list(w, name);
-			free(name);
-			p = i + 1;
-		}
-		i++;
-	}
-	printf("\n");
+	
 	while (w->last_way->ant != w->ants_count)
 		print_gps_data(w);
 }
