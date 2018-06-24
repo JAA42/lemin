@@ -1,5 +1,0 @@
-faire un parser pour les option (-v ...) pour push swap et lem in
-
-Si entree = sortie : lancer toutes les fourmies ou pas  ?
-Segfault si entree ou sortie invalide
-plein de test
