@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:38:50 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/23 18:08:56 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/23 20:58:51 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int	main()
 	split_way(w);
 	free_rooms_list(w);
 	free_way_list(w);
-	free(w->way);
+//	free(w->way);
 	free(w->entrance);
 	free(w->exit);
 	free(w);

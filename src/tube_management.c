@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:50:13 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/22 22:19:55 by avallois         ###   ########.fr       */
+/*   Updated: 2018/06/23 18:53:28 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static int		add_branch_1(t_rooms *r1, char *str, int i, int ref)
 	else if (!(new_tube = (t_rooms *)malloc(sizeof(t_rooms))))
 		ft_error(0);
 	r1->next_tube = new_tube;
+	new_tube->done = 0;
 	new_tube->next_tube = NULL;
 	new_tube->name = (ref != 1) ? ft_strndup(str, i) : ft_strdup(str + i + 1);
 	return (1);
@@ -47,6 +48,7 @@ static void	add_branch_2(t_rooms *r2, char *str, int i, int ref)
 	else if (!(new_tube = (t_rooms *)malloc(sizeof(t_rooms))))
 		ft_error(0);
 	r2->next_tube = new_tube;
+	new_tube->done = 0;
 	new_tube->next_tube = NULL;
 	new_tube->name = (ref != 1) ? ft_strdup(str + i + 1) : ft_strndup(str, i);
 	return ;

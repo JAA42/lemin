@@ -1,6 +1,6 @@
 #include "../inc/lem_in.h"
 
-static int	first_passage(char *history, char *room)
+/*static int	first_passage(char *history, char *room)
 {
 	int	i;
 	int	j;
@@ -23,8 +23,7 @@ static int	first_passage(char *history, char *room)
 		i++;
 	}
 	return (1);
-}
-
+}*/
 static t_rooms		*get_index(t_pm *w, char *tube)
 {
 	t_rooms *ptr;
@@ -35,57 +34,57 @@ static t_rooms		*get_index(t_pm *w, char *tube)
 	return (ptr);
 }
 
-static int	simule_way(t_pm *w, t_rooms *room, char *way, int len)
+static int	simule_way(t_pm *w, t_rooms *room, int len)
 {
-	char	*tmp;
+	t_rooms *ptr;
 
+	room->done = 1;
+	//ft_putstr(room->name);
+	//ft_putchar();
 	if (ft_strcmp(room->name, w->exit) == 0)
 	{
+		room->done = 1;
 		if (len < w->len || w->len == -1)
-		{
-			free(w->way);
-			w->way = ft_strdup(way);
 			w->len = len;
+		ptr = w->first;
+		while (ptr)
+		{
+			if (ptr->done == 1)
+				ft_putstr(ptr->name);
+			ptr = ptr->next_room;
 		}
-		free(way);
 		return (1);
 	}
-	if (room->next_room)
+	if (room)
 		room = room->next_tube;
+	room->done = 1;
 	while (room)
 	{
-		if (first_passage(way, room->name))
+		if (room->done == 0)
 		{
-			tmp = ft_strjoin(way, "\n");
-			free(way);
-			way = ft_strjoin(tmp, room->name);
-			free(tmp);
-			if (simule_way(w, get_index(w, room->name), ft_strdup(way), ++len))
-			{
-				free(way);
+			room->done = 1;
+			if (simule_way(w, get_index(w, room->name), ++len))
 				return (1);
-			}
 		}
 		room = room->next_tube;
 	}
-	free(way);
 	return (0);
 }
 
 char	*run_algo(t_pm *w)
 {
 	int	j;
-//	char	*way;
 	t_rooms *ptr_start;
 
 	j = 0;
-//	way = ft_strdup("\0");
 	if (ft_strcmp(w->entrance, w->exit) == 0)
 		return (w->way = ft_strdup(w->entrance));
 	ptr_start = w->first;
 	while (ft_strcmp(ptr_start->name, w->entrance) != 0)
 		ptr_start = ptr_start->next_room;
-	simule_way(w, ptr_start, ft_strdup(w->entrance), 0);
+//	ft_putstr("POMME");
+	simule_way(w, ptr_start, 0);
+	exit(0);
 	if (w->len == -1)
 		return (NULL);
 	return ("OK");
