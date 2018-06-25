@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:07:31 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/25 16:17:29 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/25 16:20:05 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ typedef struct		s_pm
 	char			*entrance;
 }					t_pm;
 
-void				sort_lst(t_way *lst_first);
 void				send_ants_to_freedom(t_pm *w);
 void				get_tube_data(t_pm *w, char *str, int *n);
 char				*run_algo(t_pm *w);
