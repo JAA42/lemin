@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:07:31 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/24 20:39:43 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/25 16:05:28 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct		s_way
 {
 	char			*name;
 	int				ant;
+	int				weight;
 	struct	s_way	*next;
 	struct	s_way	*previous;
 }					t_way;
@@ -29,12 +30,11 @@ typedef struct		s_way
 typedef	struct		s_rooms
 {
 	char			*name; // Nom de la salle liee par le tube
-	int				done;
+	int				weight;
 	struct s_rooms	*passage; // Pointeur sur la salle liee au tube
 
 	struct s_rooms	*next_tube; // 1 liste par salle
 	struct s_rooms	*next_room; // 1 liste contient toutes les salles
-
 }					t_rooms;
 
 typedef struct		s_pm
@@ -54,6 +54,7 @@ typedef struct		s_pm
 	char			***rooms;
 }					t_pm;
 
+void				sort_lst(t_way *lst_first);
 void				send_ants_to_freedom(t_pm *w);
 void				get_tube_data(t_pm *w, char *str, int *n);
 char				*run_algo(t_pm *w);
@@ -61,7 +62,7 @@ void				print_chained_list(t_pm *w);
 int					is_cmd_tube(char *line);
 void				get_ants_count(t_pm *w, char *str);
 int					is_comment(char *str);
-int					is_room_ok(t_pm *w, char *str, int *i);
+void				is_room_ok(t_pm *w, char *str, int *i);
 void				ft_error(int error_number);
 
 /*

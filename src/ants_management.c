@@ -1,42 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ants_management.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/25 14:55:35 by adhondt           #+#    #+#             */
+/*   Updated: 2018/06/25 15:33:01 by adhondt          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/lem_in.h"
 
-static void	cons_to_way_list(t_pm *w, char *name)
-{
-	t_way	*new;
-
-	if (!(new = (t_way *)malloc(sizeof(t_way))))
-		ft_error(0);
-	new->name = ft_strdup(name);
-	new->ant = 0;
-	new->next = NULL;
-	new->previous = NULL;
-	if (w->first_way)
-	{
-		new->previous = w->last_way;
-		w->last_way->next = new;
-		w->last_way = new;
-	}
-	else
-	{
-		w->last_way = new;
-		w->first_way = new;
-	}
-}
-
-static void	print_gps_data(t_pm *w)
+static void		print_gps_data(t_pm *w, t_way *first_gps, t_way *last_gps)
 {
 	t_way	*last;
 	t_way	*first;
 	int		count;
 
 	count = w->ants_count;
-	last = w->last_way;
-	first = w->first_way;
+	last = last_gps;
+	first = first_gps;
 	while (first)
 	{
 		first->ant++;
 		if (first->ant == 1)
-			break;
+			break ;
 		first = first->next;
 	}
 	while (last)
@@ -48,14 +37,52 @@ static void	print_gps_data(t_pm *w)
 	printf("\n");
 }
 
-void	send_ants_to_freedom(t_pm *w)
+static t_way	*add_gps_data(char *name, int weight, t_way **gps_data)
 {
-	
-	while (w->last_way->ant != w->ants_count)
-		print_gps_data(w);
+	t_way		*new;
+
+	if ((*gps_data)->name == NULL)
+	{
+		(*gps_data)->name = ft_strdup(name);
+		(*gps_data)->weight = weight;
+		(*gps_data)->next = NULL;
+		(*gps_data)->previous = NULL;
+		return (*gps_data);
+	}
+	if (!(new = (t_way *)malloc(sizeof(t_way))))
+		ft_error(0);
+	(*gps_data)->next = new;
+	new->next = NULL;
+	new->name = ft_strdup(name);
+	new->weight = weight;
+	new->previous = (*gps_data);
+	return (new);
 }
 
-void	get_ants_count(t_pm *w, char *str)
+void			send_ants_to_freedom(t_pm *w)
+{
+	t_rooms	*ptr;
+	t_way	*gps_data;
+	t_way	*first_gps;
+
+	ptr = w->first;
+	if (!(gps_data = (t_way *)malloc(sizeof(t_way))))
+		ft_error(0);
+	gps_data->name = NULL;
+	first_gps = gps_data;
+	while (ptr)
+	{
+		if (ptr->weight > 0)
+			gps_data = add_gps_data(ptr->name, ptr->weight, &gps_data);
+		ptr = ptr->next_room;
+	}
+	sort_lst(first_gps);
+	printf("\n");
+	while (gps_data->ant != w->ants_count)
+		print_gps_data(w, first_gps, gps_data);
+}
+
+void			get_ants_count(t_pm *w, char *str)
 {
 	int	i;
 
@@ -72,4 +99,3 @@ void	get_ants_count(t_pm *w, char *str)
 		ft_error(1);
 	free(str);
 }
-

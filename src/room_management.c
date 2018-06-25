@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:58:26 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/24 17:34:15 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/25 16:05:32 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	check_room_validity(char *str)
 {
-	char **room_data;
-	int	i;
-	int j;
+	char	**room_data;
+	int		i;
+	int		j;
 
 	j = 0;
 	room_data = ft_split(str);
@@ -43,7 +43,7 @@ static void	cons_to_room_list(t_pm *w, char **room_data, int i)
 	if (!(new = (t_rooms *)malloc(sizeof(t_rooms))))
 		ft_error(0);
 	new->name = ft_cattab_str(room_data, i - 2);
-	new->done = 0;
+	new->weight = 0;
 	new->next_room = NULL;
 	new->next_tube = NULL;
 	if (w->first)
@@ -58,33 +58,11 @@ static void	cons_to_room_list(t_pm *w, char **room_data, int i)
 	}
 }
 
-int		is_room_ok(t_pm *w, char *str, int *n)
+static void	manage_room_lst(t_pm *w, char *str)
 {
-	int	i;
 	char	**room_data;
-	
-	w->cmd = is_cmd_tube(str);
-	if (w->cmd == 1 || w->cmd == 2)
-	{
-		printf("%s\n", str);
-		free(str);
-		get_next_line(w->fd, &str);
-		check_room_validity(str);
-	}
-	else if (w->cmd == 3)
-	{
-		(*n)++;
-		if (w->entrance == NULL || w->exit == NULL)
-			ft_error(3);
-		return (0);
-	}
-	else if (w->cmd == -1)
-	{
-		printf("%s\n", str);
-		free(str);
-		return (0);
-	}
-	printf("%s\n", str);
+	int		i;
+
 	room_data = ft_split(str);
 	i = tablen(room_data);
 	if (tablen(room_data) < 3 || !ft_onlydigit(room_data[i - 1])
@@ -96,5 +74,31 @@ int		is_room_ok(t_pm *w, char *str, int *n)
 		free(room_data[i++]);
 	free(room_data);
 	free(str);
-	return (0);
+}
+
+void		is_room_ok(t_pm *w, char *str, int *n)
+{
+	w->cmd = is_cmd_tube(str);
+	if (w->cmd == 1 || w->cmd == 2)
+	{
+		printf("%s\n", str);
+		free(str);
+		get_next_line(w->fd, &str);
+		check_room_validity(str);
+	}
+	else if (w->cmd == 3 && (*n)++)
+	{
+		if (w->entrance == NULL || w->exit == NULL)
+			ft_error(3);
+		return ;
+	}
+	else if (w->cmd == -1)
+	{
+		printf("%s\n", str);
+		free(str);
+		return ;
+	}
+	printf("%s\n", str);
+	manage_room_lst(w, str);
+	return ;
 }

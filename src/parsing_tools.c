@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 18:28:25 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/23 18:42:40 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/25 15:05:18 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,13 @@ void	ft_error(int error_number)
 	if (error_number == 1)
 		ft_putstr_fd("\n\033[1;31m[ERROR : Wrong ants Number]\033[0m\n", 2);
 	else if (error_number == 2)
-		ft_putstr_fd("\n\033[1;31m[ERROR : Wrong room data / Wrong Tube data]\033[0m\n", 2);
+	{
+		ft_putstr_fd("\n\033[1;31m[ERROR : Wrong room data", 2);
+		ft_putstr_fd("/ Wrong Tube data]\033[0m\n", 2);
+	}
 	else if (error_number == 3)
 		ft_putstr_fd("\n\033[1;31m[ERROR : No ##start / No ##end]\033[0m\n", 2);
 	else if (error_number == 4)
-		ft_putstr_fd("\n\033[1;31m[ERROR : No Way to ants freedom]\033[0m\n", 2);
-	exit (0);
+		ft_putstr_fd("\n\033[1;31m[ERROR: No Way to ants freedom]\033[0m\n", 2);
+	exit(0);
 }

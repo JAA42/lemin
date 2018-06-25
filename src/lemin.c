@@ -6,12 +6,11 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:38:50 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/24 20:39:55 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/25 15:32:58 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/lem_in.h"
-
 
 static void	init_w(t_pm **w)
 {
@@ -29,6 +28,7 @@ static void	init_w(t_pm **w)
 	(*w)->way = NULL;
 	(*w)->ants_count = 0;
 }
+
 static void	get_input(t_pm *w)
 {
 	char	*line;
@@ -56,7 +56,7 @@ static void	get_input(t_pm *w)
 	}
 }
 
-void	free_rooms_list(t_pm *w)
+void		free_rooms_list(t_pm *w)
 {
 	t_rooms *ptr;
 	t_rooms *tmp;
@@ -81,7 +81,7 @@ void	free_rooms_list(t_pm *w)
 	}
 }
 
-void	free_way_list(t_pm *w)
+void		free_way_list(t_pm *w)
 {
 	t_way *ptr;
 	t_way *tmp;
@@ -96,13 +96,12 @@ void	free_way_list(t_pm *w)
 	}
 }
 
-int	main()
+int			main(void)
 {
 	t_pm	*w;
 
 	init_w(&w);
 	get_input(w);
-	//print_chained_list(w);
 	if (!run_algo(w))
 		ft_error(4);
 	send_ants_to_freedom(w);
