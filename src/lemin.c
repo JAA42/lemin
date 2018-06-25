@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:38:50 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/25 15:32:58 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/25 16:09:48 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static void	init_w(t_pm **w)
 {
 	if (!(*w = (t_pm *)malloc(sizeof(t_pm))))
 		ft_error(0);
-	(*w)->options = NULL;
 	(*w)->fd = 0;
 	(*w)->first = NULL;
 	(*w)->last = NULL;

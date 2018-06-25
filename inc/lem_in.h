@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:07:31 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/25 16:05:28 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/25 16:12:41 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ typedef struct		s_way
 
 typedef	struct		s_rooms
 {
-	char			*name; // Nom de la salle liee par le tube
+	char			*name;
 	int				weight;
-	struct s_rooms	*passage; // Pointeur sur la salle liee au tube
+	struct s_rooms	*passage;
 
-	struct s_rooms	*next_tube; // 1 liste par salle
-	struct s_rooms	*next_room; // 1 liste contient toutes les salles
+	struct s_rooms	*next_tube;
+	struct s_rooms	*next_room;
 }					t_rooms;
 
 typedef struct		s_pm
@@ -46,12 +46,10 @@ typedef struct		s_pm
 	int				len;
 	int				cmd;
 	int				ants_count;
-	char			*options;
 	int				fd;
 	char			*way;
 	char			*exit;
 	char			*entrance;
-	char			***rooms;
 }					t_pm;
 
 void				sort_lst(t_way *lst_first);
