@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:07:31 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/26 21:27:10 by avallois         ###   ########.fr       */
+/*   Updated: 2018/06/26 20:48:52 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct		s_pm
 	t_rooms			*last;
 	int				len;
 	int				cmd;
-	long			ants_count;
+	int				ants_count;
 	int				fd;
 	int				options_info[3];
 	char			*options;
@@ -90,7 +90,6 @@ char			*ft_strcat(char *dest, const char *src);
 void			*ft_memset(void *s, int c, size_t n);
 char			*ft_chardup(char c);
 int				ft_atoi(const char *str);
-long			ft_long_atoi(const char *str);
 void			ft_putchar(char c);
 void			ft_putchar_fd(char c, int fd);
 int				pos_in_str(char c, char *str);

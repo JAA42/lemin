@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:38:50 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/26 19:58:45 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/26 23:57:10 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,48 +61,9 @@ static void	get_input(t_pm *w)
 		ft_error(3);
 }
 
-void		free_rooms_list(t_pm *w)
-{
-	t_rooms *ptr;
-	t_rooms *tmp;
-	t_rooms *ptr2;
-	t_rooms *tmp2;
-
-	ptr = w->first;
-	while (ptr)
-	{
-		ptr2 = ptr->next_tube;
-		while (ptr2)
-		{
-			free(ptr2->name);
-			tmp2 = ptr2->next_tube;
-			free(ptr2);
-			ptr2 = tmp2;
-		}
-		free(ptr->name);
-		tmp = ptr->next_room;
-		free(ptr);
-		ptr = tmp;
-	}
-}
-
-void		free_way_list(t_pm *w)
-{
-	t_way *ptr;
-	t_way *tmp;
-
-	ptr = w->first_way;
-	while (ptr)
-	{
-		free(ptr->name);
-		tmp = ptr->next;
-		free(ptr);
-		ptr = tmp;
-	}
-}
-
 void	display_options_infos(t_pm *w)
 {
+	printf("\n");
 	if (isoption(w->options, 'r'))
 		printf("Number of rooms --> %d\n", w->options_info[0]);
 	if (isoption(w->options, 't'))
@@ -128,7 +89,7 @@ int		display_options(t_pm *w)
 int			main(int argc, char *argv[])
 {
 	t_pm	*w;
-	static char *options_available = "Rrto"; //manque le f pour fast eventuellement
+	static char *options_available = "Rrto";
 
 	(void)argc;
 	init_w(&w);

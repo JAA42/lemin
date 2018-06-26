@@ -1,0 +1,14 @@
+dans le fichier tests:
+
+\\dans le fichier "management":
+ce qu'on accepte de gerer est precede de valid 
+et les autres de invalid
+
+\\dans le fichier "maps":
+il reste les bail a gerer, et il y a les maps
+de test dans le fichier map
+
+\\a la source du fichier "tests::
+il reste les bails qu'on doit gerer
+
+NE PAS OUBLIER DE REMPLACER LES printf

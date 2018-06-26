@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 14:55:35 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/26 19:59:33 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/26 21:31:07 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,13 +124,16 @@ void			get_ants_count(t_pm *w, char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]))
+		if (!ft_isdigit(str[i]) || i > 10)
+		{
+			printf("%s\n", str);
 			ft_error(1);
+		}
 		i++;
 	}
 	printf("%s\n", str);
-	w->ants_count = ft_atoi(str);
-	if (w->ants_count <= 0)
+	w->ants_count = ft_long_atoi(str);
+	if (w->ants_count <= 0 || w->ants_count > 2147483647)
 		ft_error(1);
 	free(str);
 }
