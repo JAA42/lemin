@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:07:31 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/26 17:19:14 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/26 19:26:50 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct		s_pm
 	char			*entrance;
 }					t_pm;
 
+void				free_gps(t_way *first);
 int					isoption(char *options, char c);
 char				*get_options(char *argv[], char *options_available);
 void				send_ants_to_freedom(t_pm *w);

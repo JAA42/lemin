@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 18:28:25 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/26 17:50:51 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/26 18:41:27 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	update_journey(t_pm *w, char *str)
 
 int		is_comment(char *str)
 {
-	if (ft_strlen(str) > 1)
 		return (str[0] == '#' && str[1] != '#');
 }
 

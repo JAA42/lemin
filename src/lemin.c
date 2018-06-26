@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:38:50 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/26 17:16:01 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/26 19:31:15 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,7 @@ int			main(int argc, char *argv[])
 	free(w->way);
 	free(w->entrance);
 	free(w->exit);
+	free(w->options);
 	free(w);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 14:55:35 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/26 17:40:52 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/26 19:27:16 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ void			send_ants_to_freedom(t_pm *w)
 	t_rooms	*ptr;
 	t_way	*gps_data;
 	t_way	*first_gps;
+	t_way	*tmp;
+	t_way	*tmp2;
 
 	ptr = w->first;
 	if (!(gps_data = (t_way *)malloc(sizeof(t_way))))
@@ -99,11 +101,18 @@ void			send_ants_to_freedom(t_pm *w)
 			gps_data = add_gps_data(ptr->name, ptr->weight, &gps_data);
 		ptr = ptr->next_room;
 	}
-	return ;
 	sort_lst(first_gps);
 	printf("\n");
 	while (gps_data->ant != w->ants_count)
 		print_gps_data(w, first_gps, gps_data);
+	tmp = first_gps;
+	while (tmp)
+	{
+		free(tmp->name);
+		tmp2 = tmp->next;
+		free(tmp);
+		tmp = tmp2;
+	}
 }
 
 void			get_ants_count(t_pm *w, char *str)
