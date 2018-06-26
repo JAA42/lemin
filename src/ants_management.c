@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 14:55:35 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/26 19:27:16 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/26 19:59:33 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ static t_way	*add_gps_data(char *name, int weight, t_way **gps_data)
 	{
 		(*gps_data)->name = ft_strdup(name);
 		(*gps_data)->weight = weight;
+		(*gps_data)->ant = 0;
 		(*gps_data)->next = NULL;
 		(*gps_data)->previous = NULL;
 		return (*gps_data);
@@ -77,6 +78,7 @@ static t_way	*add_gps_data(char *name, int weight, t_way **gps_data)
 	(*gps_data)->next = new;
 	new->next = NULL;
 	new->name = ft_strdup(name);
+	new->ant = 0;
 	new->weight = weight;
 	new->previous = (*gps_data);
 	return (new);

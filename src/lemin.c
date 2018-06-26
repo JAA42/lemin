@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:38:50 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/26 19:31:15 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/26 19:58:45 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,6 @@ int			main(int argc, char *argv[])
 	if (display_options(w))
 		return (0);
 	get_input(w);
-//	printf("opt2:%d|\n", w->options_info[0]);
 	if (!run_algo(w))
 		ft_error(5);
 	send_ants_to_freedom(w);
