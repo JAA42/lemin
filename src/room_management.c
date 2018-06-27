@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:58:26 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/27 11:56:26 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/27 14:13:14 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,17 @@ static void	cons_to_room_list(t_pm *w, char **room_data, int i)
 
 	w->options_info[0] += 1;
 	if (w->cmd == 1)
+	{
+		if (w->entrance)
+			free(w->entrance);
 		w->entrance = ft_cattab_str(room_data, i - 2);
+	}
 	else if (w->cmd == 2)
+	{
+		if (w->exit)
+			free(w->exit);
 		w->exit = ft_cattab_str(room_data, i - 2);
+	}
 	if (!(new = (t_rooms *)malloc(sizeof(t_rooms))))
 		ft_error(0);
 	new->name = ft_cattab_str(room_data, i - 2);
