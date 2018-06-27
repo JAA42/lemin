@@ -6,19 +6,24 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:58:26 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/27 11:05:16 by avallois         ###   ########.fr       */
+/*   Updated: 2018/06/27 11:56:26 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/lem_in.h"
 
-static void	check_room_validity(char *str)
+static int		check_room_validity(char *str)
 {
 	char	**room_data;
 	int		i;
 	int		j;
 
 	j = 0;
+	if (str[0] == '#' && str[1] != '#')
+	{
+		free(str);
+		return (0);
+	}
 	room_data = ft_split(str);
 	i = tablen(room_data);
 	if (tablen(room_data) < 3 || !ft_onlydigit(room_data[i - 1])
@@ -33,6 +38,7 @@ static void	check_room_validity(char *str)
 			free(room_data[j++]);
 		free(room_data);
 	}
+	return (1);
 }
 
 static void	cons_to_room_list(t_pm *w, char **room_data, int i)
@@ -88,7 +94,8 @@ void		is_room_ok(t_pm *w, char *str, int *n)
 		printf("%s\n", str);
 		free(str);
 		get_next_line(w->fd, &str);
-		check_room_validity(str);
+		if (!(check_room_validity(str)))
+			return ;
 	}
 	else if (w->cmd == 3 && (*n)++)
 	{

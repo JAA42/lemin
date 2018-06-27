@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:38:50 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/27 10:38:55 by avallois         ###   ########.fr       */
+/*   Updated: 2018/06/27 11:50:18 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static void	get_input(t_pm *w)
 	{
 		if (is_comment_emptyline(line))
 		{
+
 			printf("%s\n", line);
 			free(line);
 		}

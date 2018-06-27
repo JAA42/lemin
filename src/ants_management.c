@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 14:55:35 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/27 10:24:28 by avallois         ###   ########.fr       */
+/*   Updated: 2018/06/27 11:43:04 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,17 +83,6 @@ static t_way	*add_gps_data(char *name, int weight, t_way **gps_data)
 	new->weight = weight;
 	new->previous = (*gps_data);
 	return (new);
-}
-
-t_way			*free_ant_sender(t_way *tmp)
-{
-	t_way	*tmp2;
-
-	free(tmp->name);
-	tmp2 = tmp->next;
-	free(tmp);
-	tmp = tmp2;
-	return (tmp);
 }
 
 void			send_ants_to_freedom(t_pm *w)

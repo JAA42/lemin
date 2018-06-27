@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:50:13 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/26 20:56:35 by avallois         ###   ########.fr       */
+/*   Updated: 2018/06/27 11:48:29 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,11 @@ void		get_tube_data(t_pm *w, char *str, int *n)
 		i++;
 	if (!add_to_tubelist(w, str, i))
 	{
+		printf("yoyo/%s/\n", w->first->name);
 		if (!w->first)
+		{
 			ft_error(2);
+		}
 		else
 			ft_putstr_fd("\n\033[1;31m[ERROR: Bad tube data]\033[0m\n", 2);
 		(*n)++;
