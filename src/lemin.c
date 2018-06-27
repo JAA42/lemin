@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:38:50 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/26 23:57:10 by avallois         ###   ########.fr       */
+/*   Updated: 2018/06/27 10:26:17 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,9 @@ static void	get_input(t_pm *w)
 
 void	display_options_infos(t_pm *w)
 {
-	printf("\n");
+	if (isoption(w->options, 'r') || isoption(w->options, 'r') ||
+			isoption(w->options, 'r'))
+		printf("\n");
 	if (isoption(w->options, 'r'))
 		printf("Number of rooms --> %d\n", w->options_info[0]);
 	if (isoption(w->options, 't'))

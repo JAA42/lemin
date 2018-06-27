@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 18:28:25 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/26 18:41:27 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/27 10:11:37 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	update_journey(t_pm *w, char *str)
 
 int		is_comment(char *str)
 {
-		return (str[0] == '#' && str[1] != '#');
+	return (str[0] == '#' && str[1] != '#');
 }
 
 int		is_cmd_tube(char *line)

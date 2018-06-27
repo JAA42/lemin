@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 14:55:35 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/26 21:31:07 by avallois         ###   ########.fr       */
+/*   Updated: 2018/06/27 10:24:28 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static void		sort_lst(t_way *lst_first)
 			ptr = ptr->next;
 	}
 }
+
 static void		print_gps_data(t_pm *w, t_way *first_gps, t_way *last_gps)
 {
 	t_way	*last;
@@ -84,13 +85,23 @@ static t_way	*add_gps_data(char *name, int weight, t_way **gps_data)
 	return (new);
 }
 
+t_way			*free_ant_sender(t_way *tmp)
+{
+	t_way	*tmp2;
+
+	free(tmp->name);
+	tmp2 = tmp->next;
+	free(tmp);
+	tmp = tmp2;
+	return (tmp);
+}
+
 void			send_ants_to_freedom(t_pm *w)
 {
 	t_rooms	*ptr;
 	t_way	*gps_data;
 	t_way	*first_gps;
 	t_way	*tmp;
-	t_way	*tmp2;
 
 	ptr = w->first;
 	if (!(gps_data = (t_way *)malloc(sizeof(t_way))))
@@ -109,12 +120,7 @@ void			send_ants_to_freedom(t_pm *w)
 		print_gps_data(w, first_gps, gps_data);
 	tmp = first_gps;
 	while (tmp)
-	{
-		free(tmp->name);
-		tmp2 = tmp->next;
-		free(tmp);
-		tmp = tmp2;
-	}
+		tmp = free_ant_sender(tmp);
 }
 
 void			get_ants_count(t_pm *w, char *str)
