@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:07:31 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/27 15:36:06 by avallois         ###   ########.fr       */
+/*   Updated: 2018/06/27 21:12:13 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ typedef struct		s_pm
 	char			*entrance;
 }					t_pm;
 
+void				display_passage(int ant, char *name);
+void				display_room_error(char *str);
+void				display_start_end_error(t_pm *w);
 void				free_room_data(char **room_data);
 t_way				*free_ant_sender(t_way *tmp);
 int					is_comment_emptyline(char *str);

@@ -6,18 +6,11 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:58:26 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/27 21:03:25 by avallois         ###   ########.fr       */
+/*   Updated: 2018/06/27 21:10:00 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/lem_in.h"
-
-void			display_room_error(char *str)
-{
-	ft_putstr(str);
-	ft_putchar('\n');
-	ft_error(2);
-}
 
 static char		*check_room_validity(t_pm *w, char *str)
 {
@@ -103,12 +96,6 @@ static void	manage_room_lst(t_pm *w, char *str)
 		free(room_data[i++]);
 	free(room_data);
 	free(str);
-}
-
-void		display_start_end_error(t_pm *w)
-{
-	if (w->entrance == NULL || w->exit == NULL)
-		ft_error(3);
 }
 
 void		is_room_ok(t_pm *w, char *str, int *n)
