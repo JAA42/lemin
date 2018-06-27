@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:58:26 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/27 18:49:32 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/27 20:29:25 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ static char		*check_room_validity(t_pm *w, char *str)
 	room_data = NULL;
 	while (str[0] == '#')
 	{
-		printf("%s\n", str);
+		ft_putstr(str);
+		ft_putchar('\n');
 		free(str);
 		get_next_line(w->fd, &str);
 		k = is_cmd_tube(str);
@@ -36,7 +37,8 @@ static char		*check_room_validity(t_pm *w, char *str)
 	if (tablen(room_data) < 3 || !ft_onlydigit(room_data[i - 1])
 			|| !ft_onlydigit(room_data[i - 2]) || is_cmd_tube(str) != 0)
 	{
-		printf("%s\n", str);
+		ft_putstr(str);
+		ft_putchar('\n');
 		ft_error(2);
 	}
 	else
@@ -102,7 +104,8 @@ void		is_room_ok(t_pm *w, char *str, int *n)
 	w->cmd = is_cmd_tube(str);
 	if (w->cmd == 1 || w->cmd == 2)
 	{
-		printf("%s\n", str);
+		ft_putstr(str);
+		ft_putchar('\n');
 		free(str);
 		get_next_line(w->fd, &str);
 		str = check_room_validity(w, str);
@@ -115,11 +118,13 @@ void		is_room_ok(t_pm *w, char *str, int *n)
 	}
 	else if (w->cmd == -1)
 	{
-		printf("%s\n", str);
+		ft_putstr(str);
+		ft_putchar('\n');
 		free(str);
 		return ;
 	}
-	printf("%s\n", str);
+	ft_putstr(str);
+	ft_putchar('\n');
 	manage_room_lst(w, str);
 	return ;
 }

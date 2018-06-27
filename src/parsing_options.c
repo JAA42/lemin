@@ -25,14 +25,24 @@ void	isvalid_option(char c, char *options_available, char *executable)
 			return ;
 		i++;
 	}
-	printf("%s: illegal options -- %c\nusage: %s [-%s]", executable,
-			c, executable, options_available);
+	ft_putstr(executable);
+	ft_putstr(": illegal options -- ");
+	ft_putchar(c);
+	ft_putchar('\n');
+	ft_putstr("usage: ");
+	ft_putstr(executable);
+	ft_putstr(" [-");
+	ft_putstr(options_available);
+	ft_putstr("]");
 	exit(0);
 }
 
 void	ft_unused_entry_error(char *str)
 {
 	printf("Nothing to do with: %s\n", str);
+	ft_putstr("Nothing to do with: ");
+	ft_putstr(str);
+	ft_putchar('\n');
 	exit(0);
 }
 

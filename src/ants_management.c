@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 14:55:35 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/27 11:43:04 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/27 20:34:39 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,16 @@ static void		print_gps_data(t_pm *w, t_way *first_gps, t_way *last_gps)
 	while (last)
 	{
 		if (last->ant != 0 && last->ant <= w->ants_count)
-			printf("L%d->%s ", last->ant, last->name);
+		{
+			ft_putstr("L");
+			ft_putnbr(last->ant);
+			ft_putstr("->");
+			ft_putstr(last->name );
+			ft_putstr(" ");
+		}
 		last = last->previous;
 	}
-	printf("\n");
+	ft_putchar('\n');
 }
 
 static t_way	*add_gps_data(char *name, int weight, t_way **gps_data)
@@ -104,7 +110,7 @@ void			send_ants_to_freedom(t_pm *w)
 		ptr = ptr->next_room;
 	}
 	sort_lst(first_gps);
-	printf("\n");
+	ft_putchar('\n');
 	while (gps_data->ant != w->ants_count)
 		print_gps_data(w, first_gps, gps_data);
 	tmp = first_gps;
@@ -121,12 +127,14 @@ void			get_ants_count(t_pm *w, char *str)
 	{
 		if (!ft_isdigit(str[i]) || i > 10)
 		{
-			printf("%s\n", str);
+			ft_putstr(str);
+			ft_putchar('\n');
 			ft_error(1);
 		}
 		i++;
 	}
-	printf("%s\n", str);
+	ft_putstr(str);
+	ft_putchar('\n');
 	w->ants_count = ft_long_atoi(str);
 	if (w->ants_count <= 0 || w->ants_count > 2147483647)
 		ft_error(1);

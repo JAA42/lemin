@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:50:13 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/27 12:01:08 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/27 20:30:12 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,8 @@ void		get_tube_data(t_pm *w, char *str, int *n)
 	int	i;
 
 	i = 0;
-	printf("%s\n", str);
+	ft_putstr(str);
+	ft_putchar('\n');
 	if (str[0] == '#' && str[1] != '#')
 		return ;
 	else if (str[0] == '#' && str[1] == '#')

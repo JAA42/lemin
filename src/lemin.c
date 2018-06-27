@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:38:50 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/27 15:03:46 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/27 20:36:19 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ static void	get_input(t_pm *w)
 	{
 		if (is_comment_emptyline(line))
 		{
-
-			printf("%s\n", line);
+			ft_putstr(line);
+			ft_putchar('\n');
 			free(line);
 		}
 		else if (i == 0 && (i = 1))
@@ -65,22 +65,34 @@ void	display_options_infos(t_pm *w)
 {
 	if (isoption(w->options, 'r') || isoption(w->options, 'r') ||
 			isoption(w->options, 'r'))
-		printf("\n");
+		ft_putchar('\n');
 	if (isoption(w->options, 'r'))
-		printf("Number of rooms --> %d\n", w->options_info[0]);
+	{
+		ft_putstr("Number of rooms --> ");
+		ft_putnbr(w->options_info[0]);
+		ft_putchar('\n');
+	}
 	if (isoption(w->options, 't'))
-		printf("Number of tubes --> %d\n", w->options_info[1]);
+	{
+		ft_putstr("Number of tubes --> ");
+		ft_putnbr(w->options_info[1]);
+		ft_putchar('\n');
+	}
 	if (isoption(w->options, 'R'))
-		printf("Rooms tried --> %d\n", w->options_info[2]);
+	{
+		ft_putstr("Number of rooms tried --> ");
+		ft_putnbr(w->options_info[2]);
+		ft_putchar('\n');
+	}
 }
 
 int		display_options(t_pm *w)
 {
 	if (isoption(w->options, 'o'))
 	{
-		printf("r : Number of rooms\n");
-		printf("t : Number of tubes\n");
-		printf("R : Number of rooms tried\n");
+		ft_putstr("r : Number of rooms\n");
+		ft_putstr("t : Number of tubes\n");
+		ft_putstr("R : Number of rooms tried\n");
 		free(w->options);
 		free(w);
 		return (1);

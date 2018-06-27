@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 18:28:25 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/27 10:35:30 by avallois         ###   ########.fr       */
+/*   Updated: 2018/06/27 20:26:18 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,27 +43,6 @@ int		is_cmd_tube(char *line)
 		return (2);
 	else
 		return (-1);
-}
-
-void	print_chained_list(t_pm *w)
-{
-	t_rooms	*ptr;
-	t_rooms	*tube_ptr;
-	int		i;
-
-	ptr = w->first;
-	i = 0;
-	while (ptr != NULL)
-	{
-		printf("Room: %s|\n", ptr->name);
-		tube_ptr = ptr->next_tube;
-		while (tube_ptr)
-		{
-			printf("\tTube: %s|\n", tube_ptr->name);
-			tube_ptr = tube_ptr->next_tube;
-		}
-		ptr = ptr->next_room;
-	}
 }
 
 void	ft_error(int error_number)
