@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 18:42:06 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/27 11:11:22 by avallois         ###   ########.fr       */
+/*   Updated: 2018/06/27 15:36:20 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,12 @@ void		free_way_list(t_pm *w)
 	}
 }
 
+void			free_room_data(char **room_data)
+{
+	int j;
 
+	j = 0;
+	while (room_data[j])
+		free(room_data[j++]);
+	free(room_data);
+}

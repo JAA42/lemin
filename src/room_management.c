@@ -6,20 +6,20 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:58:26 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/27 14:37:06 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/27 15:36:25 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/lem_in.h"
 
+
+
 static int		check_room_validity(t_pm *w, char *str)
 {
 	char	**room_data;
 	int		i;
-	int		j;
 	int		k;
 
-	j = 0;
 	k = 0;
 	while (str[0] == '#')
 	{
@@ -39,11 +39,7 @@ static int		check_room_validity(t_pm *w, char *str)
 		ft_error(2);
 	}
 	else
-	{
-		while (room_data[j])
-			free(room_data[j++]);
-		free(room_data);
-	}
+		free_room_data(room_data);
 	return (1);
 }
 
