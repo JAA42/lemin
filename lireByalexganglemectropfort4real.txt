@@ -8,7 +8,7 @@ et les autres de invalid
 il reste les bail a gerer, et il y a les maps
 de test dans le fichier map
 
-\\a la source du fichier "tests::
+\\a la source du fichier "tests":
 il reste les bails qu'on doit gerer
 
 NE PAS OUBLIER DE REMPLACER LES printf
