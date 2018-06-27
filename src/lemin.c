@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:38:50 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/27 10:26:17 by avallois         ###   ########.fr       */
+/*   Updated: 2018/06/27 10:38:55 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	get_input(t_pm *w)
 	i = 0;
 	while (get_next_line(w->fd, &line) > 0)
 	{
-		if (is_comment(line))
+		if (is_comment_emptyline(line))
 		{
 			printf("%s\n", line);
 			free(line);
@@ -52,7 +52,7 @@ static void	get_input(t_pm *w)
 			get_ants_count(w, line);
 		else if (i == 1)
 			is_room_ok(w, line, &i);
-		if (i == 2 && !is_comment(line))
+		if (i == 2 && !is_comment_emptyline(line))
 			get_tube_data(w, line, &i);
 		if (i == 3)
 			break ;

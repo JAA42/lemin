@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:58:26 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/26 23:56:13 by avallois         ###   ########.fr       */
+/*   Updated: 2018/06/27 11:05:16 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void		is_room_ok(t_pm *w, char *str, int *n)
 	}
 	else if (w->cmd == -1)
 	{
-		printf("----%s\n", str);
+		printf("%s\n", str);
 		free(str);
 		return ;
 	}
