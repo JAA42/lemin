@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:07:31 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/27 11:12:30 by avallois         ###   ########.fr       */
+/*   Updated: 2018/06/27 15:04:02 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ typedef struct		s_pm
 	int				fd;
 	int				options_info[3];
 	char			*options;
-	char			*way;
 	char			*exit;
 	char			*entrance;
 }					t_pm;

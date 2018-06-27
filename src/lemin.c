@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:38:50 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/27 11:50:18 by adhondt          ###   ########.fr       */
+/*   Updated: 2018/06/27 15:03:46 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static void	init_w(t_pm **w)
 	(*w)->exit = NULL;
 	(*w)->entrance = NULL;
 	(*w)->len = -1;
-	(*w)->way = NULL;
 	(*w)->ants_count = 0;
 	while (i < 3)
 		(*w)->options_info[i++] = 0;
@@ -106,7 +105,6 @@ int			main(int argc, char *argv[])
 	display_options_infos(w);
 	free_rooms_list(w);
 	free_way_list(w);
-	free(w->way);
 	free(w->entrance);
 	free(w->exit);
 	free(w->options);

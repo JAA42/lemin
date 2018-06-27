@@ -6,23 +6,29 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:58:26 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/27 14:13:14 by avallois         ###   ########.fr       */
+/*   Updated: 2018/06/27 14:37:06 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/lem_in.h"
 
-static int		check_room_validity(char *str)
+static int		check_room_validity(t_pm *w, char *str)
 {
 	char	**room_data;
 	int		i;
 	int		j;
+	int		k;
 
 	j = 0;
-	if (str[0] == '#' && str[1] != '#')
+	k = 0;
+	while (str[0] == '#')
 	{
 		free(str);
-		return (0);
+		get_next_line(w->fd, &str);
+		k = is_cmd_tube(str);
+		printf("%s\n", str);
+		if (k == 1 || k == 2 || k == 3)
+			ft_error(2);
 	}
 	room_data = ft_split(str);
 	i = tablen(room_data);
@@ -102,7 +108,7 @@ void		is_room_ok(t_pm *w, char *str, int *n)
 		printf("%s\n", str);
 		free(str);
 		get_next_line(w->fd, &str);
-		if (!(check_room_validity(str)))
+		if (!(check_room_validity(w, str)))
 			return ;
 	}
 	else if (w->cmd == 3 && (*n)++)
