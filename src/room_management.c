@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:58:26 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/27 15:36:25 by avallois         ###   ########.fr       */
+/*   Updated: 2018/06/27 18:49:32 by adhondt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,20 @@
 
 
 
-static int		check_room_validity(t_pm *w, char *str)
+static char		*check_room_validity(t_pm *w, char *str)
 {
 	char	**room_data;
 	int		i;
 	int		k;
 
 	k = 0;
+	room_data = NULL;
 	while (str[0] == '#')
 	{
+		printf("%s\n", str);
 		free(str);
 		get_next_line(w->fd, &str);
 		k = is_cmd_tube(str);
-		printf("%s\n", str);
 		if (k == 1 || k == 2 || k == 3)
 			ft_error(2);
 	}
@@ -40,7 +41,7 @@ static int		check_room_validity(t_pm *w, char *str)
 	}
 	else
 		free_room_data(room_data);
-	return (1);
+	return (str);
 }
 
 static void	cons_to_room_list(t_pm *w, char **room_data, int i)
@@ -104,8 +105,7 @@ void		is_room_ok(t_pm *w, char *str, int *n)
 		printf("%s\n", str);
 		free(str);
 		get_next_line(w->fd, &str);
-		if (!(check_room_validity(w, str)))
-			return ;
+		str = check_room_validity(w, str);
 	}
 	else if (w->cmd == 3 && (*n)++)
 	{
