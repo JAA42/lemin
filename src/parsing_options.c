@@ -34,12 +34,12 @@ void	isvalid_option(char c, char *options_available, char *executable)
 	ft_putstr(" [-");
 	ft_putstr(options_available);
 	ft_putstr("]");
+	ft_putchar('\n');
 	exit(0);
 }
 
 void	ft_unused_entry_error(char *str)
 {
-	printf("Nothing to do with: %s\n", str);
 	ft_putstr("Nothing to do with: ");
 	ft_putstr(str);
 	ft_putchar('\n');
