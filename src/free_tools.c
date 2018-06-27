@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/26 18:42:06 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/27 20:09:53 by avallois         ###   ########.fr       */
+/*   Updated: 2018/06/27 20:50:25 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	free_gps(t_way *first)
 {
-
 	while (first)
 	{
 		free(first->name);

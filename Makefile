@@ -6,7 +6,7 @@
 #    By: avallois <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/13 21:48:44 by avallois          #+#    #+#              #
-#    Updated: 2018/06/26 21:24:33 by avallois         ###   ########.fr        #
+#    Updated: 2018/06/27 21:05:25 by avallois         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 CC = gcc
 
-FLAGS =# -Wall -Wextra -Werror #-fsanitize=address
+FLAGS = -Wall -Wextra -Werror #-fsanitize=address
 
 CPP_FLAGS = -Iinclude
 

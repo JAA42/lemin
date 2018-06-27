@@ -6,7 +6,7 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 14:55:35 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/27 20:34:39 by avallois         ###   ########.fr       */
+/*   Updated: 2018/06/27 20:49:56 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,15 @@ static void		sort_lst(t_way *lst_first)
 	}
 }
 
+void			display_passage(int ant, char *name)
+{
+	ft_putstr("L");
+	ft_putnbr(ant);
+	ft_putstr("->");
+	ft_putstr(name);
+	ft_putstr(" ");
+}
+
 static void		print_gps_data(t_pm *w, t_way *first_gps, t_way *last_gps)
 {
 	t_way	*last;
@@ -55,13 +64,7 @@ static void		print_gps_data(t_pm *w, t_way *first_gps, t_way *last_gps)
 	while (last)
 	{
 		if (last->ant != 0 && last->ant <= w->ants_count)
-		{
-			ft_putstr("L");
-			ft_putnbr(last->ant);
-			ft_putstr("->");
-			ft_putstr(last->name );
-			ft_putstr(" ");
-		}
+			display_passage(last->ant, last->name);
 		last = last->previous;
 	}
 	ft_putchar('\n');

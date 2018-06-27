@@ -6,13 +6,18 @@
 /*   By: adhondt <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:58:26 by adhondt           #+#    #+#             */
-/*   Updated: 2018/06/27 20:29:25 by avallois         ###   ########.fr       */
+/*   Updated: 2018/06/27 21:03:25 by avallois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/lem_in.h"
 
-
+void			display_room_error(char *str)
+{
+	ft_putstr(str);
+	ft_putchar('\n');
+	ft_error(2);
+}
 
 static char		*check_room_validity(t_pm *w, char *str)
 {
@@ -36,14 +41,24 @@ static char		*check_room_validity(t_pm *w, char *str)
 	i = tablen(room_data);
 	if (tablen(room_data) < 3 || !ft_onlydigit(room_data[i - 1])
 			|| !ft_onlydigit(room_data[i - 2]) || is_cmd_tube(str) != 0)
-	{
-		ft_putstr(str);
-		ft_putchar('\n');
-		ft_error(2);
-	}
+		display_room_error(str);
 	else
 		free_room_data(room_data);
 	return (str);
+}
+
+void			init_room_struct(t_pm *w, t_rooms *new)
+{
+	if (w->first)
+	{
+		w->last->next_room = new;
+		w->last = new;
+	}
+	else
+	{
+		w->last = new;
+		w->first = new;
+	}
 }
 
 static void	cons_to_room_list(t_pm *w, char **room_data, int i)
@@ -69,16 +84,7 @@ static void	cons_to_room_list(t_pm *w, char **room_data, int i)
 	new->weight = 0;
 	new->next_room = NULL;
 	new->next_tube = NULL;
-	if (w->first)
-	{
-		w->last->next_room = new;
-		w->last = new;
-	}
-	else
-	{
-		w->last = new;
-		w->first = new;
-	}
+	init_room_struct(w, new);
 }
 
 static void	manage_room_lst(t_pm *w, char *str)
@@ -99,6 +105,12 @@ static void	manage_room_lst(t_pm *w, char *str)
 	free(str);
 }
 
+void		display_start_end_error(t_pm *w)
+{
+	if (w->entrance == NULL || w->exit == NULL)
+		ft_error(3);
+}
+
 void		is_room_ok(t_pm *w, char *str, int *n)
 {
 	w->cmd = is_cmd_tube(str);
@@ -112,8 +124,7 @@ void		is_room_ok(t_pm *w, char *str, int *n)
 	}
 	else if (w->cmd == 3 && (*n)++)
 	{
-		if (w->entrance == NULL || w->exit == NULL)
-			ft_error(3);
+		display_start_end_error(w);
 		return ;
 	}
 	else if (w->cmd == -1)
